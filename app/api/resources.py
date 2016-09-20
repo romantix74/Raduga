@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from tastypie.resources import ModelResource
 from tastypie import fields
-from app.models import Album, Foto
+from app.models import Album, Foto, Director
+
+from tastypie.authentication import BasicAuthentication
+from tastypie.authorization import DjangoAuthorization
 
 from tastypie.resources import ModelResource, ALL, ALL_WITH_RELATIONS
 
@@ -29,4 +32,19 @@ class FotoResource(ModelResource):
         # добавляем поле с превьюшками , потому что оно не сериализируеться
         bundle.data['image_small'] = bundle.obj.image_small.url
         return bundle
-        
+
+class DirectorResource(ModelResource):
+    class Meta:
+        queryset = Director.objects.all()
+        resource_name = 'director'
+        excludes = ['email', 'password', 'is_active', 'is_staff', 'is_superuser']
+        allowed_methods = ['get', 'post']
+        authentication = BasicAuthentication()
+        authorization = DjangoAuthorization()
+    
+    #функции ограницивающие действия , только для объекта-Director , под которым мы залогинились
+    def obj_create(self, bundle, **kwargs):
+        return super(DirectorResource, self).obj_create(bundle, user=bundle.request.user)
+
+    def authorized_read_list(self, object_list, bundle):
+        return object_list.filter(user=bundle.request.user)
