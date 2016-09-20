@@ -1,0 +1,43 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% if messages %}
+<div class="row">
+    {% for message in messages %}
+    <p 
+        {% if message.tags == "success" %} class="alert alert-success clsMessage" 
+        {% elif message.tags == "error" %} class="alert alert-danger clsMessage" 
+        {% endif %}>    
+        {{ message }}        
+    </p>            
+    {% endfor %}
+</div>
+{% endif %} 
+
+
+<div class="row">
+    <h4 class="text-center col-md-12">КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
+</div>
+<div>
+    <ul>
+        <li>сайт: <a href="http://radugafest.com">http://radugafest.com</a></li>
+        <li>e-mail: <a href="http://dance@radugafest.com">dance@radugafest.com</a></li>
+        <li>Телефоны для связи: 8-800-500-43-92 - Оргкомитет            
+        </li>
+        
+    </ul>
+</div>
+<div style="border-top: 1px solid #0077bb; margin-top: 10px; ">
+    <h4>Форма обратной связи:</h4>
+    <form action="" method="POST" class="form-horizontal">
+            <div class="modal-body form-group-sm center-block">
+            {% crispy formFeedback %}   
+        </div>  
+        <br/>
+    </form>
+</div>
+
+{% endblock %}

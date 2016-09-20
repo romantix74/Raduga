@@ -1,0 +1,52 @@
+﻿{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% load staticfiles %}
+
+<div id="TableMembersID" class="table-responsive">
+{% include 'tables/TableMembersChild.html' %}
+</div>
+<!-- Modal for button AddMemberModal -->
+<div class="modal fade" id="AddMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form" id="AddorEditMemberFormId" action="{% url 'createOrEditMember' 999999 %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Добавить участника</h4>
+                </div>
+                <div class="modal-body form-group-sm center-block">
+                    {% crispy form %}   
+                </div>
+                <img id="loadImg" class="loadImg" src="{% static 'app/images/ajax-loader.gif'%}" />
+            </form>            
+        </div>        
+    </div>    
+</div>
+
+<!-- Modal for button DelMemberModal -->
+<div class="modal fade" id="DelMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="delMemberId" action="{% url 'deleteMember' 999999 %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="DelModalLabel">Вы действительно хотите удалить участника ?:</h4>
+                </div>
+                <div class="modal-body">
+
+                    {% csrf_token %}
+                    <ul>
+                        <h4 id="clsDelMemberId"></h4>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn" value="Удалить участника">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+                <img id="loadImg" class="loadImg" src="{% static 'app/images/ajax-loader.gif'%}" />
+            </form>
+        </div>
+    </div>
+</div>
+
+

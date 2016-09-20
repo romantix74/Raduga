@@ -1,0 +1,20 @@
+﻿{#{{forloop.parentloop}}#}
+<tr {% if forloop.counter == 1 %} class="rowSecond" {%endif%}>
+    {#<td><small>{{forloop.counter}}</small></td>#}
+    <td class="first_col"><small>{{part.user.groupName}}</small></td>
+    <td class="second_col"><small>{{part.user.city}}</small></td>
+    <td><small>{{part.composition_1}}</small></td>
+    <td><small>{{part.form_of_execution_output}}</small></td>    
+    <td><small>{{part.list_member}}</small></td>
+    <td><small>
+        {% if part.file_music %} 
+            Да
+        {% else %}
+            Нет
+        {% endif %}
+        </small>
+    </td>
+    <td><small>{{part.place}}</small></td>
+    <td><small>{{part.payment}}</small></td>
+</tr>
+

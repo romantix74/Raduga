@@ -1,0 +1,70 @@
+﻿{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" ng-app="mainPageApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - RadugaFest</title>    
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap-datetimepicker.css' %}" />    
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/datetimepicker.css' %}" />    
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/jquery-1.12.0.min.js' %}"></script>
+    <script src="{% static 'app/scripts/modernizr-custom.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+    
+    <script src="{% static 'app/scripts/bootstrap-datetimepicker.js' %}" charset="UTF-8"></script> 
+    <script src="{% static 'app/scripts/bootstrap-datetimepicker.ru.js' %}" charset="UTF-8"></script> 
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/jquery.kladr.min.css' %}" />
+    <script src="{% static 'app/scripts/jquery.kladr.min.js' %}"></script>     
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/xeditable.min.css' %}" />
+    <script src="{% static 'app/scripts/xeditable.min.js' %}"></script>
+
+    <script src="{% static 'app/scripts/app.js' %}"></script>
+    <script src="{% static 'app/scripts/script.js' %}"></script>
+    
+    <!-- Include the plugin's CSS and JS: -->   
+    <script src="{% static 'app/scripts/bootstrap-multiselect.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap-multiselect-collapsible-groups.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap-multiselect.css' %}" />    
+</head>
+
+<body >
+    <div class="container body-content">           
+        <nav id="header" class="blog-nav">                
+            <ul class="nav navbar-nav pull-left">
+                <li><img src="{% static 'app/images/logo.png' %}" width="36" height="36" class="pull-left center-block" /></li>
+                <li><a href="{% url 'home' %}">Главная</a></li>   
+                <li><a href="{% url 'reglament' %}">Положение</a></li>  
+                <li><a href="{% url 'news' %}">Новости</a></li>   
+                <li><a href="{% url 'results' %}">Результаты</a></li>  
+                <li><a href="{% url 'foto' %}">Фото</a></li>                             
+                <li><a href="{% url 'contact' %}">Контакты</a></li>     
+            </ul> 
+              
+            {% include 'app/loginpartial.html' %}
+        </nav>
+
+        {% block content %}{% endblock %}
+        <hr/>
+       
+        <div>  
+            <footer>
+                <p>&copy; 2011 - {{ year }}  Радуга-танца</p>
+            </footer>
+        </div>
+        
+    </div>    
+    
+{% block scripts %}{% endblock %}
+
+ 
+
+</body>
+</html>

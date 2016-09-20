@@ -1,0 +1,80 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block content %}
+
+<!-- если пользователь авторизован , то выводим всю страницу -->
+{% if username  %}
+<div class="row">
+    {% if messages %}
+        {% for message in messages %}
+        <p 
+            {% if message.tags == "success" %} class="alert alert-success clsMessage"
+            {% elif message.tags == "error" %} class="alert alert-danger clsMessage"
+            {% endif %}>
+            {{ message }}
+        </p>            
+        {% endfor %}
+    {% endif %} 
+</div>
+<!-- Главная строка , делиться на главное окно и сайтбар -->      
+        <!-- Фотка-кнопка загрузки фото плюс профиль и таблицы -->       
+            <!-- Фотка-кнопка загрузки -->
+            <div class="row" id="profile_block" name="profile_block" ng-controller="ProfileController as prfCtrl">
+                {#{$ 2+3 $}#}
+                <div  class="col-md-6" >                   
+                    {% if directorOfGroup.foto %}
+                        <img id="profile_image" src="{{directorOfGroup.foto.url}}" alt="фото коллектива" class="img-responsive center-block"/>                    
+                    {% else %}
+                        <img id="profile_image" src="{% static 'app/images/big_plus.jpg' %}" alt="фото коллектива" class="img-responsive center-block"/>
+                    {% endif %}
+                    <div id="profile_image_btn" class="" data-toggle="modal" data-target="#UploadFotoModal">
+                        <span class="btn btn-sm btn-lg center-block" >Загрузить фото</span>
+                    </div>                                    
+                    <!-- Modal for button Upload_director_file -->
+                    <div class="modal fade" id="UploadFotoModal" tabindex="-1" role="dialog" aria-labelledby="UploadFotoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form action="{% url 'uploadFoto' %}" method="post" enctype="multipart/form-data">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="UploadFotoId">Введите путь к файлу с фото</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {% csrf_token %}
+                                        <ul>
+                                            {{formFoto}}
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn" value="Загрузить фото">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Профиль -->
+                <div id="profile" class="col-md-6">
+                {% include 'tables/Profile.html' %}  
+                </div>                     
+            </div>
+            <!-- Таблицы идут во второй строке -->
+            <!-- Таблица с участниками --------------------------------------------------------------------------->
+            {#{% include 'tables/TableMembers.html' %}#}
+            <!-- Таблица с заявками на участие ------------------------------------------------------------------->
+            {% include 'tables/TableParticipations.html' %}
+            <!-- Проживание -------------------------------------------------------------------------------------->
+            {% include 'tables/TableResidings.html' %}
+            <!--Питание -------------------------------------------------------------------------------------->
+            {% include 'tables/TableFoods.html' %}
+            <!--Трансфер -------------------------------------------------------------------------------------->
+            {% include 'tables/TableTransfers.html' %}
+            <!--Экскурсии -------------------------------------------------------------------------------------->
+            {% include 'tables/TableExcursions.html' %}   
+                  
+{% endif %}
+
+<br/>
+{% endblock %}

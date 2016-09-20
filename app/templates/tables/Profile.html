@@ -1,0 +1,56 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+ 
+<!-- Профиль -->
+
+<div id="Profile_table_name_id">                 
+    <h4 class="text-right">
+        ПРОФИЛЬ        
+        <span class="pull-left">            
+            <img src="{% static 'app/images/pencil2.png' %}" width="20" height="20" data-toggle="modal" data-target="#EditDirectorModal"/>
+            <img src="{% static 'app/images/pencil.png' %}" width="20" height="20" data-toggle="modal" data-target="#EditDirectorModal"/>
+        </span>
+    </h4>                                    
+</div>
+<div class="modal fade" id="EditDirectorModal" tabindex="-1" role="dialog" aria-labelledby="EditDirectorLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal " role="form" id="EditDirectorFormId" action="{% url 'editDir' %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Редактировать профиль</h4>
+                </div>
+                <div class="modal-body form-group-sm center-block js-form-address">
+                    {% csrf_token %}
+                    <ul>
+                        {% crispy formEditDir %}                        
+                    </ul>
+                </div>                                   
+            </form>
+        </div>
+    </div>
+</div>
+
+<table id="tblProfile" class="table table-hover table-condensed editableTable">
+    <thead class="thead">
+        <tr>
+                                    
+        </tr>
+    </thead>
+    <tbody>            
+        <tr><td><small>КОЛЛЕКТИВ</small></td> <td class="forHover"><small id="group_id">{{ directorOfGroup.groupName|truncatewords:3 }}</small></td></tr>
+        <tr><td><small>СТРАНА</small></td> <td class="forHover"><small id="country_id">{{directorOfGroup.country}}</small></td></tr>
+        <tr><td><small>ГОРОД н.п</small></td> <td class="forHover"><small id="city_id">{{directorOfGroup.city}} </small></td></tr>
+        <tr><td><small>РУКОВОДИТЕЛЬ</small></td> <td><small id="dir_id">{{directorOfGroup.director}}</small></td></tr>
+        <tr><td><small>ПЕДАГОГ/ХОРЕОГРАФ</small></td> <td><small id="teacher_id">{{directorOfGroup.teacher}}</small></td></tr>
+        <tr><td><small>ТЕЛЕФОН</small></></td> <td><small id="phone_id">{{directorOfGroup.phoneNumber}}</small></td></tr>
+        <tr><td><small>E-MAIL</small></td> <td><small id="mail_id">{{directorOfGroup.email}}</small></td></tr>
+        <tr><td><small>УЧРЕЖДЕНИЕ</small></td> <td><small id="inst_id">{{directorOfGroup.institution|truncatewords:3}}</small></td></tr>
+        {#<tr><td><small>АДРЕС УЧРЕЖДЕНИЯ</small></td> <td><small id="addInst_id">{{directorOfGroup.addressInstitution|truncatewords:3}}</small></td></tr>#}
+        {#<tr><td><small>ПОЧТОВЫЙ АДРЕС</small></td> <td><small id="addPost_id">{{directorOfGroup.postalAddress}}</small></td></tr>#}
+        <tr><td><small>САЙТ</small></td> <td><small id="site_id">{{directorOfGroup.site}}</small></td></tr>
+    </tbody>
+</table>
+   
+
+

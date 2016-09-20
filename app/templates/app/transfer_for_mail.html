@@ -1,0 +1,39 @@
+﻿
+{% block content %}
+
+   
+    Пользователь {{dir.user.username}} {% if flag_new_request %} отправил {% else %} отредактировал {% endif %} 
+    заявку на питание под номером: {{ req_transfer.pk }}
+    <br/>
+
+    <table style="border: blue 1px solid;">
+            
+        <tr>
+            <td>ДАТА ОТБЫТИЯ:</td><td >{{req_transfer.date_departure|date:"Y-m-d"}}</td>
+        </tr>
+        <tr>
+            <td>ВРЕМЯ ОТБЫТИЯ:</td><td >{{ req_transfer.time_departure|date:"H:i" }}</td>
+        </tr>
+        <tr>
+            <td>МЕСТО ОТБЫТИЯ:</td><td>{{ req_transfer.place_departure }}</td>
+        </tr>
+        <tr>
+            <td>МЕСТО ПРИБЫТИЯ:</td><td> {{ req_transfer.place_arrival }} </td>
+        </tr>
+        <tr>
+            <td>КОЛИЧЕСТВО ОБЩЕЕ:</td><td> {{ req_transfer.quantity_total }}</td>
+        </tr>
+        <tr>
+            <td>КОЛИЧЕСТВО ВЗРОСЛЫХ:</td><td>{{ req_transfer.quantity_adult }}</td>
+        </tr>
+        <tr>
+            <td>КОЛИЧЕСТВО УЧАСТНИКОВ:</td><td>{{ req_transfer.quantity_member }}</td>
+        </tr>
+        
+            
+               
+    </table> 
+      
+       
+  
+{% endblock %}

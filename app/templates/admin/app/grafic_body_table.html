@@ -1,0 +1,20 @@
+﻿
+        <tr>
+            {#<td><small>{{forloop.counter}}</small></td>#}
+            <td><small>{{part.user.groupName}}</small></td>
+            <td><small>{{part.user.city}}</small></td>
+            <td><small>{{part.composition_1}}</small></td>
+            <td><small>{{part.form_of_execution_output}}</small></td>    
+            <td><small>{{part.list_member}}</small></td>
+            <td><small>
+                {% if part.music %} 
+                    Да
+                {% else %}
+                    Нет
+                {% endif %}
+                </small>
+            </td>
+            <td><small>{{part.place}}</small></td>
+            <td><small>{{part.payment}}</small></td>
+        </tr>
+

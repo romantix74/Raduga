@@ -1,0 +1,131 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+<div class="table-name">  
+    <h4 class="text-left">
+        <img src="{% static 'app/images/home.png' %}" width="20" height="20"/>
+        ЗАЯВКИ НА ПИТАНИЕ
+        <span class="pull-right">
+            <img  src="{% static 'app/images/plus.png' %}" width="20" height="20" 
+                data-toggle="modal" data-target="#AddFoodModal" onclick="return funcFoodAdd(this)"/>
+            <img  src="{% static 'app/images/plus2.png' %}" width="20" height="20"
+                data-toggle="modal" data-target="#AddFoodModal" onclick="return funcFoodAdd(this)"/>
+        </span>
+    </h4>     
+</div>
+
+<div class="table-responsive">    
+    <table class="table table-hover table-condensed">
+            <thead class="thead">
+            <tr>
+                <td >
+                    <small>№</small>
+                </td>
+                <td >
+                    <small>МЕСТО ПРОЖИВАНИЯ</small>
+                </td>
+                {#<td >#}
+                    {#<small>ОБЩЕЕ КОЛ-ВО</small>#}
+                {#</td>#}
+                <td >
+                    <small>ВЗРОСЛЫЕ</small>
+                </td>
+                
+                <td >
+                    <small>УЧАСТНИКИ</small>
+                </td>
+                <td >
+                    <small>ДАТА</small>
+                </td>
+                <td >
+                    <small>ЗАВТРАК</small>
+                </td>
+                <td >
+                    <small>ОБЕД</small>
+                </td>
+                <td >
+                    <small>УЖИН</small>
+                </td>
+
+                {#<td >#}
+                    {#<small>ОПЛАТА</small>#}
+                {#</td>#}
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+            </tr>
+            </thead>
+            {% for req_food in foods %}
+            {% if req_food.status == 'ok' %}                        
+                <tr valign="top" class="success">                 
+            {% elif req_food.status == 'warn' %}                        
+                <tr valign="top" class="danger">                       
+            {% else %}                       
+                <tr valign="top" class="warning">                       
+            {% endif %}
+                <td >
+                    <small>{{forloop.counter}}</small>
+                </td>
+                <td >
+                    {#<small>{{ req_food.place_of_residing_output }}</small>#}
+                    <small>{{req_food.place_of_residing}}</small>
+                </td>
+                {#<td>#}
+                    {#<small>{{ req_food.quantity_total }}</small>#}
+                {#</td>#}
+                <td>
+                    <small>{{ req_food.quantity_adult }}</small>
+                </td>                
+                <td>
+                    <small>{{ req_food.quantity_member }}</small>
+                </td>                
+                <td>
+                    <small>{{ req_food.date|date:"Y-m-d" }}</small>
+                </td>
+                <td >
+                    {% if req_food.zavtrak %}
+                    <span class="glyphicon glyphicon-ok center-block text-center"></span>                     
+                    {% endif %}
+                </td>
+                <td >
+                    {% if req_food.obed %}
+                    <span class="glyphicon glyphicon-ok center-block text-center"></span>                     
+                    {% endif %}
+                </td>
+                <td >
+                    {% if req_food.ugin %}
+                    <span class="glyphicon glyphicon-ok center-block text-center"></span>                     
+                    {% endif %}
+                </td>    
+                
+                {#<td>#}
+                    {#<small>{{ req_food.payment }}</small>#}
+                {#</td>#}
+                <td onclick="return funcFoodEdit(this)">                    
+                    <img src="{% static 'app/images/pencil3.png' %}" width="20" height="20" data-toggle="modal" data-target="#AddFoodModal">
+                </td>
+                <td onclick="return funcFoodRemove(this)">                    
+                    <img src="{% static 'app/images/trash.png' %}" width="20" height="20" data-toggle="modal" data-target="#DelFoodModal">
+                    <span class="hidden">{{ req_food.id }}</span>
+                </td>
+                <td>                    
+                    {% if req_food.status == 'ok' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/approve.png' %}" width="20" height="20"></p>                 
+                    {% elif req_food.status == 'warn' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/unapprove.png' %}" width="20" height="20"></p>                       
+                    {% else %}                       
+                        <p class="text-center"><img src="{% static 'app/images/uau.png' %}" width="20" height="20"></p>                       
+                    {% endif %}
+                </td>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>   
+</div>

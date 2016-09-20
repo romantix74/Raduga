@@ -1,0 +1,67 @@
+﻿{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="{% static 'app/content/bootstrap-image-gallery.min.css' %}">
+
+<div class="row">
+    <h4 class="text-center col-md-12">ФОТО ГАЛЛЕРЕЯ</h4>
+</div>
+
+<div id="foto_body_id" class="row" ng-controller="FotoCtrl as ctrl">
+    <div class="col-md-3">       
+        <p ng-repeat="album in albums" ng-click="getFoto(album.id)" >{$ album.title $}</p>
+    </div>
+    <div class="col-md-9">
+        <div><h3>{$ current_album_name $}</h3></div>
+        <div class="" id="links"  >           
+            {#<img class="" ng-src="{$ image.image $}" height="80" width="120" style="border: 1px solid white"/>#} 
+            <a ng-repeat="image in foto" href="{$ image.image $}" title="Banana" data-gallery>
+                <img ng-src="{$ image.image_small $}" alt="Banana">
+            </a>
+            {#<img class="" ng-repeat="image in foto" ng-src="{$ image.image_small $}" height="80" width="120" style="border: 1px solid white"/>#}               
+        </div>
+    </div>
+</div>
+
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    {#<h4 class="modal-title"></h4>#}
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Предыдущее
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Следующее
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="{% static 'app/scripts/bootstrap-image-gallery.min.js' %}" ></script>
+<script src="{% static 'app/scripts/image-gallery.js' %}" ></script>
+
+
+{% endblock %}

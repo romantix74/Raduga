@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+{% load inplace_edit %}
+   <html>
+       <head>
+           ...
+           {% inplace_css 1 %} {% comment %} or inplace_css 0 {% endcomment %}
+       </head>
+       <body>
+           ...
+           <div id="content">
+               ...
+               {% inplace_edit "content.name" %}
+               ...
+               <div class="description">
+                   {% inplace_edit "directorGroup.city" %}
+                   {% inplace_edit "directorGroup.city|safe" %}
+               </div>
+               <div class="body">
+                   {% inplace_edit "directorGroup.director" %}
+               </div>
+           </div>
+           ...
+       
+           
+           {% inplace_js 1 1 %} {% comment %} or inplace_js 1 0 {% endcomment %}
+       </body>
+   </html>

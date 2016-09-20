@@ -1,0 +1,153 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+   
+<div class="table-name">   
+    <h4 class="h4 text-left">
+        <img src="{% static 'app/images/applications.png' %}" width="20" height="20"/>
+        ЗАЯВКИ НА УЧАСТИЕ | Общая сумма оргвзноса: {{sumParticipation}}        
+        <span class="pull-right">
+            <img  src="{% static 'app/images/plus.png' %}" width="20" height="20" 
+                  data-toggle="modal" data-target="#AddParticipationModal" onclick="return funcParticipationAdd(this)"/>
+            <img  src="{% static 'app/images/plus2.png' %}" width="20" height="20" 
+                  data-toggle="modal" data-target="#AddParticipationModal" onclick="return funcParticipationAdd(this)"/>
+        </span>  
+         
+    </h4>  
+</div> 
+
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+        <thead class="thead">
+        <tr>
+            <td >
+                <small>№</small>
+            </td>
+            <td >
+                <small>КАТЕГОРИЯ</small>
+            </td>
+            <td >
+                <small>НОМИНАЦИЯ</small>
+            </td>
+            <td >
+                <small>ВОЗР. ГРУППА</small>
+            </td>
+            <td >
+                <small>ПОДГРУППА</small>
+            </td>
+            <td >
+                <small>ФОРМА ИСП-Я</small>
+            </td>
+            <td >
+                <small>КОЛ-ВО УЧ-КОВ</small>
+            </td>
+            {#<td >#}
+                {#<small>М</small>#}
+            </td>
+            {#<td >#}
+                {#<small>Ж</small>#}
+            {#</td>#}
+            <td >
+                <small>ТАНЕЦ</small>
+            </td>
+            <td style="width:20px">
+                <img src="{% static 'app/images/audio.png' %}" width="20" height="20" />
+                {#<small>АУДИО</small>#}
+            </td>     
+            <td >
+                <small>ОПЛАТА</small>
+            </td>           
+            <td >
+                <small></small>
+            </td>
+            <td >
+                <small></small>
+            </td>
+            <td >
+                <small></small>
+            </td>
+        </tr>
+        </thead>
+        {% for req_participation in participation %}
+        {% if req_participation.status == 'ok' %}                        
+            <tr valign="top" class="success">                 
+        {% elif req_participation.status == 'warn' %}                        
+            <tr valign="top" class="danger">                       
+        {% else %}                       
+            <tr valign="top" class="warning">                       
+        {% endif %}
+        {#<tr valign="top">#}
+            <td >
+                <small>{{forloop.counter}}</small>
+            </td>
+            <td >
+                <small>{{ req_participation.category_output }}</small>
+            </td>
+            <td>
+                <small>{{ req_participation.nomination_output }}</small>
+            </td>
+            <td>
+                <small>{{ req_participation.age_group_output }}</small>
+            </td>
+            <td>
+                <small>{{ req_participation.subgroup }}</small>
+            </td>
+            <td>
+                <small>{{ req_participation.form_of_execution_output }}</small>
+            </td>
+            <td>
+                {% if req_participation.list_member %}
+                <small>{{ req_participation.list_member }}</small>
+                {% else %} 
+                <small>0</small>
+                {% endif %}
+                
+                {#{% for item in req_participation.list_member.all %}#}
+                {#<div><small>{{item}}</small></div>#}
+                {#{% endfor %}#}
+            </td>                
+            {#<td>#}
+                {#{{req_participation.list_member_male_count}}#}          {#list_member.all.count}}#}
+            {#</td>#}
+            {#<td>#}
+                {#{{req_participation.list_member_female_count}}#}          
+            {#</td>#}
+            <td>
+                <small>{{ req_participation.composition_1|truncatechars:8 }}</small>
+            </td>
+            <td style="width:20px;" onclick="playMusic($(this))">
+                {% if req_participation.file_music %}
+                {#<img src="{% static 'app/images/galka.png' %}" width="20" height="20" onclick="playMusic($(this))"/>#}
+                
+                <img src="{% static 'app/images/play.png' %}"  width="20" height="20" />
+                <img src="{% static 'app/images/stop.png' %}" style="display: none; " width="20" height="20" />
+                <audio class='player' src = {{ req_participation.file_music.url }} >    
+                </audio>
+                {% else %} 
+                <img src="{% static 'app/images/krestik.png' %}" width="20" height="20" />         
+                {% endif %}
+            </td>
+            <td>
+                <small>{{ req_participation.payment }}</small>
+            </td>               
+
+            <td onclick="return funcParticipationEdit(this)">              
+                <img src="{% static 'app/images/pencil3.png' %}" width="20" height="20" data-toggle="modal" data-target="#AddParticipationModal">
+            </td>
+            <td onclick="return funcParticipationRemove(this)">                
+                <img src="{% static 'app/images/trash.png' %}" width="20" height="20" data-toggle="modal" data-target="#DelParticipationModal">
+                <span class="hidden">{{ req_participation.id }}</span>
+            </td>
+            <td >
+                {% if req_participation.status == 'ok' %}                        
+                    <p class="text-center"><img src="{% static 'app/images/approve.png' %}" width="20" height="20"></p>                 
+                {% elif req_participation.status == 'warn' %}                        
+                    <p class="text-center"><img src="{% static 'app/images/unapprove.png' %}" width="20" height="20"></p>                       
+                {% else %}                       
+                    <p class="text-center"><img src="{% static 'app/images/uau.png' %}" width="20" height="20"></p>                       
+                {% endif %}
+            </td>
+        </tr>
+        {%endfor%}            
+    </table>
+</div>

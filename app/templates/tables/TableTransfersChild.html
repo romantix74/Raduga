@@ -1,0 +1,116 @@
+﻿{#{% load crispy_forms_tags %}#}
+{% load staticfiles %}
+
+<div class="table-name">    
+    <h4 class="text-left">
+        <img src="{% static 'app/images/transport.png' %}" width="20" height="20"/>
+        ЗАЯВКИ НА ТРАНСФЕР
+        <span class="pull-right">
+            <img  src="{% static 'app/images/plus.png' %}" width="20" height="20"
+                 data-toggle="modal" data-target="#AddTransferModal" onclick="return funcTransferAdd(this)"/>
+            <img  src="{% static 'app/images/plus2.png' %}" width="20" height="20"#}
+                  data-toggle="modal" data-target="#AddTransferModal" onclick="return funcTransferAdd(this)"/>
+        </span>
+    </h4>     
+</div>
+
+<div class="table-responsive">    
+    <table class="table table-hover table-condensed">
+            <thead class="thead">
+            <tr>
+                <td >
+                    <small>№</small>
+                </td>
+                <td >
+                    <small>ОТЪЕЗД</small>
+                </td>
+                <td >
+                    <small>ВРЕМЯ</small>
+                </td>
+                <td >
+                    <small>МЕСТО ОТБЫТИЯ</small>
+                </td>
+                <td >
+                    <small>МЕСТО ПРИБЫТИЯ</small>
+                </td>
+                <td >
+                    <small>ОБЩЕЕ КОЛ-ВО</small>
+                </td>
+                <td >
+                    <small>КОЛ-ВО ВЗРОСЛЫХ</small>
+                </td>
+                <td >
+                    <small>КОЛ-ВО УЧАСТНИКОВ</small>
+                </td>
+                {#<td >#}
+                    {#<small>ОПЛАТА</small>#}
+                {#</td>#}
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+                <td>
+                    <small></small>
+                </td>
+            </tr>
+            </thead>
+            {% for transfer in transfers %}
+            {% if transfer.status == 'ok' %}                        
+                <tr valign="top" class="success">                 
+            {% elif transfer.status == 'warn' %}                        
+                <tr valign="top" class="danger">                       
+            {% else %}                       
+                <tr valign="top" class="warning">                       
+            {% endif %}
+                <td >
+                    <small>{{forloop.counter}}</small>
+                </td>
+                <td >
+                    <small>{{ transfer.date_departure|date:"Y-m-d" }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.time_departure|date:"H:i" }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.place_departure }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.place_arrival }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.quantity_total }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.quantity_adult }}</small>
+                </td>
+                <td>
+                    <small>{{ transfer.quantity_member }}</small>
+                </td>
+                {#<td>#}
+                    {#<small>{{ transfer.payment }}</small>#}
+                {#</td>#}
+                <td onclick="return funcTransferEdit(this)">
+                   
+                    <img src="{% static 'app/images/pencil3.png' %}" width="20" height="20" data-toggle="modal" data-target="#AddTransferModal">
+                </td>
+                <td onclick=" return funcTransferRemove(this) ">
+                    <img src="{% static 'app/images/trash.png' %}" width="20" height="20" data-toggle="modal" data-target="#DelTransferModal">
+                    {#<span class="glyphicon glyphicon-remove clsMemberRemove " data-toggle="modal" data-target="#DelTransferModal"></span>#}
+                    <span class="hidden">{{ transfer.id }}</span>
+                </td>
+                <td>
+                    {% if transfer.status == 'ok' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/approve.png' %}" width="20" height="20"></p>                 
+                    {% elif transfer.status == 'warn' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/unapprove.png' %}" width="20" height="20"></p>                       
+                    {% else %}                       
+                        <p class="text-center"><img src="{% static 'app/images/uau.png' %}" width="20" height="20"></p>                       
+                    {% endif %}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>    
+</div>
+

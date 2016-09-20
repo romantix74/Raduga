@@ -1,0 +1,19 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div >
+            <form action="/register/" method="POST" class="form-horizontal">
+                 <div class="modal-body form-group-sm center-block">
+                    {% crispy form %}   
+                </div>  
+                <br/>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

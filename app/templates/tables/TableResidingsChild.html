@@ -1,0 +1,134 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+<div class="table-name">  
+    <h4 class="text-left">
+        <img src="{% static 'app/images/home.png' %}" width="20" height="20"/>
+        ЗАЯВКИ НА ПРОЖИВАНИЕ
+        <span class="pull-right">
+            <img  src="{% static 'app/images/plus.png' %}" width="20" height="20" 
+                data-toggle="modal" data-target="#AddResidingModal" onclick="return funcResidingAdd(this)"/>
+            <img  src="{% static 'app/images/plus2.png' %}" width="20" height="20"
+                data-toggle="modal" data-target="#AddResidingModal" onclick="return funcResidingAdd(this)"/>
+        </span>
+    </h4>     
+</div>
+
+<div class="table-responsive">    
+    <table class="table table-hover table-condensed">
+            <thead class="thead">
+            <tr>
+                <td >
+                    <small>№</small>
+                </td>
+                <td >
+                    <small>МЕСТО ПРОЖИВАНИЯ</small>
+                </td>
+                <td >
+                    <small>ОБЩЕЕ КОЛ-ВО</small>
+                </td>
+                <td >
+                    <small>вз. М</small>
+                </td>
+                <td >
+                    <small>вз. Ж</small>
+                </td>
+                <td >
+                    <small>уч. М</small>
+                </td>
+                <td >
+                    <small>уч. Ж</small>
+                </td>
+                <td >
+                    <small>ЗАЕЗД</small>
+                </td>
+                <td >
+                    <small>ВРЕМЯ</small>
+                </td>
+                <td >
+                    <small>ОТЪЕЗД</small>
+                </td>
+                <td >
+                    <small>ВРЕМЯ</small>
+                </td>
+                {#<td >#}
+                    {#<small>ОПЛАТА</small>#}
+                {#</td>#}
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+            </tr>
+            </thead>
+            {% for req_residing in residing %}
+            {% if req_residing.status == 'ok' %}                        
+                <tr valign="top" class="success">                 
+            {% elif req_residing.status == 'warn' %}                        
+                <tr valign="top" class="danger">                       
+            {% else %}                       
+                <tr valign="top" class="warning">                       
+            {% endif %}
+                <td >
+                    <small>{{forloop.counter}}</small>
+                </td>
+                <td >
+                    {#<small>{{ req_residing.place_of_residing_output }}</small>#}
+                    <small>{{req_residing.place_of_residing}}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.quantity_total }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.quantity_adult_male }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.quantity_adult_female }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.quantity_member_male }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.quantity_member_female }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.date_arrival|date:"Y-m-d" }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.time_arrival|date:"H:i" }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.date_departure|date:"Y-m-d" }}</small>
+                </td>
+                <td>
+                    <small>{{ req_residing.time_departure|date:"H:i" }}</small>
+                </td>
+                {#<td>#}
+                    {#<small>{{ req_residing.payment }}</small>#}
+                {#</td>#}
+                <td onclick="return funcResidingEdit(this)">                    
+                    <img src="{% static 'app/images/pencil3.png' %}" width="20" height="20" data-toggle="modal" data-target="#AddResidingModal">
+                </td>
+                <td onclick="return funcResidingRemove(this)">                    
+                    <img src="{% static 'app/images/trash.png' %}" width="20" height="20" data-toggle="modal" data-target="#DelResidingModal">
+                    <span class="hidden">{{ req_residing.id }}</span>
+                </td>
+                <td>                    
+                    {% if req_residing.status == 'ok' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/approve.png' %}" width="20" height="20"></p>                 
+                    {% elif req_residing.status == 'warn' %}                        
+                        <p class="text-center"><img src="{% static 'app/images/unapprove.png' %}" width="20" height="20"></p>                       
+                    {% else %}                       
+                        <p class="text-center"><img src="{% static 'app/images/uau.png' %}" width="20" height="20"></p>                       
+                    {% endif %}
+                </td>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>   
+</div>

@@ -1,0 +1,45 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div id="news_id">
+    {%for one_news in news%}
+    
+    <div class="border">
+        <div class="row">       
+            <div class="col-md-4">
+                {% if one_news.foto %}
+                <img id="profile_image" src="{{one_news.foto.url}}" style="width: 240px; height:240px" alt="фото новости" class="img-responsive center-block"/>   
+                {% endif %}     
+            </div>
+            <div class="col-md-8">
+                <div class="news-name">
+                    <h4 class="text-left">{{one_news.news_title}}</h4>
+                </div>
+                <span class="">{{one_news.news|truncatewords:35|urlize}} </span>
+                <span class="hidden">{{one_news.news|urlize}} </span>   
+                <br/>
+                
+                <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+                <span class="pull-left ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter"
+                        data-description="{{one_news.news}}" data-image="{{one_news.foto.url}}"
+                        data-url="http://cabinet.radugafest.com/news"
+                        data-title="Фестиваль 'Радуга-танца'">
+                </span> 
+                <span class="pull-right" style="white-space:normal">
+                    {{one_news.date_creation}}
+                    <span class="btn btn-link news_detailed">Подробнее</span>
+                </span>           
+            </div>
+        </div>
+        {#<div class="row">#}     
+         
+        {#</div>#}    
+    </div>
+    
+    <br/>
+    {%endfor%}
+</div>
+
+{% endblock %}

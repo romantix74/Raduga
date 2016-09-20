@@ -1,0 +1,47 @@
+﻿
+{% block content %}
+
+<div id="news_id">   
+    Пользователь {{dir.user.username}} {% if flag_new_request %} отправил {% else %} отредактировал {% endif %} 
+    заявку на проживание под номером: {{ req_residing.pk }}
+    <br/>
+
+    <table style="border: blue 1px solid;">
+        <tr>
+            <td >Место проживания:</td>
+            <td >{{req_residing.place_of_residing}}</td>
+        </tr>
+        <tr>
+            <td >Общее количество:</td><td >{{ req_residing.quantity_total }}</td>
+        </tr>
+        <tr>
+            <td>Количество взрослых М.</td><td>{{ req_residing.quantity_adult_male }}</td>
+        </tr>
+        <tr>
+            <td>Количество взрослых Ж.</td><td>{{ req_residing.quantity_adult_female }}</td>
+        </tr>
+        <tr>
+            <td>Количество участников М.</td><td>{{ req_residing.quantity_member_male }}</td>
+        </tr>
+        <tr>
+            <td>Количество участников Ж.</td><td>{{ req_residing.quantity_member_female }}</td>
+        </tr>
+        <tr>
+            <td>Дата заезда</td><td>{{ req_residing.date_arrival|date:"Y-m-d" }}</td>
+        </tr>
+        <tr>
+            <td>Время заезда</td><td>{{ req_residing.time_arrival|date:"H:i" }}</td>
+        </tr>
+        <tr>
+            <td>Дата отъезда</td><td>{{ req_residing.date_departure|date:"Y-m-d" }}</td>
+        </tr>
+        <tr>
+            <td>Время отъезда</td><td>{{ req_residing.time_departure|date:"H:i" }}</td>
+        </tr>        
+    </table> 
+      
+    {% include 'app/wrap_mail.html' %}          
+    
+</div>       
+  
+{% endblock %}

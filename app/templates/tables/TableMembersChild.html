@@ -1,0 +1,114 @@
+﻿{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% load staticfiles %}
+
+{#выдаем в главное окно и в аякс, поэтому сделал отдельно страницу , чтобы не отдавались модальные окна#}
+
+<div class="table-name"> 
+    <h4 class="text-left">
+        <img src="{% static 'app/images/men.png' %}" data-toggle="modal" data-target="#AddMemberModal" width="20" height="20"/>
+        СПИСОК УЧАСТНИКОВ
+        <span class="pull-right">
+            <img src="{% static 'app/images/plus.png' %}" width="20" height="20"
+                 data-toggle="modal" data-target="#AddMemberModal" {#onclick="return funcMemberAdd(this)"#}/>
+            <img src="{% static 'app/images/plus2.png' %}" width="20" height="20" 
+                 data-toggle="modal" data-target="#AddMemberModal" {#onclick="return funcMemberAdd(this)"#}/>
+        </span>
+    </h4>    
+</div>
+    <table class="table table-hover table-condensed">
+        <thead class="thead">
+            <tr>
+                <td >
+                    <small>№</small>
+                </td>
+                <td >
+                    <small>ВОЗРАСТНАЯ ГРУППА</small>
+                </td>
+                <td >
+                    <small>ФАМИЛИЯ</small>
+                </td>
+                <td >
+                    <small>ИМЯ</small>
+                </td>                
+                <td >
+                    <small>ВОЗРАСТ</small>
+                </td>
+                <td >
+                    <small>ПОЛ</small>
+                </td>
+                <td >
+                    <img src="{% static 'app/images/foto_menu.png' %}" width="20" height="20" />
+                    {#<small>ФОТО ДОКУМЕНТА</small>#}
+                </td>
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+                <td >
+                    <small></small>
+                </td>
+            </tr>        
+        </thead>
+        <tbody>        
+        {%for member in members%}
+        {% if member.status == 'ok' %}                        
+            <tr valign="top" class="success">                 
+        {% elif member.status == 'warn' %}                        
+            <tr valign="top" class="danger">                       
+        {% else %}                       
+            <tr valign="top" class="warning">                       
+        {% endif %}
+            <td >
+                <small>{{ forloop.counter }}</small>
+            </td>
+            <td>
+                <small>{{ member.age_group_output }}</small>
+            </td>
+            <td>
+                <small>{{ member.last_name|title  }}</small>
+            </td>
+            <td >
+                <small>{{member.first_name|title }}</small>
+            </td>                
+            <td>
+                <small>{{ member.age }}</small>
+            </td>  
+            <td>
+                <small>{{ member.gender_output }}</small>
+            </td>              
+            <td style="width:20px;">  
+                {#<img src="{% static 'app/images/galka.png' %}" width="20" height="20" />#}                  
+                {% thumbnail member.scan_passport "100x100" crop="center" as im %}
+                    <img src= "./uploads/{{ im }}" width="20" height="20">
+                {% endthumbnail %}
+            </td>
+            <td onclick="return funcMemberEdit(this)">                
+                <img src="{% static 'app/images/pencil3.png' %}" width="20" height="20" data-toggle="modal" data-target="#AddMemberModal">
+            </td>
+            <td onclick="return funcMemberRemove(this)">
+                {#<span class="glyphicon glyphicon-remove clsMemberRemove " data-toggle="modal" data-target="#DelMemberModal"></span>#}
+                <img src="{% static 'app/images/trash.png' %}" width="20" height="20" data-toggle="modal" data-target="#DelMemberModal">
+                <span class="hidden">{{ member.id }}</span>
+            </td>
+            <td>
+                {% if member.status == 'ok' %}                        
+                    <p class="text-center"><img src="{% static 'app/images/approve.png' %}" width="20" height="20"></p>                 
+                {% elif member.status == 'warn' %}                        
+                    <p class="text-center"><img src="{% static 'app/images/unapprove.png' %}" width="20" height="20"></p>                       
+                {% else %}                       
+                    <p class="text-center"><img src="{% static 'app/images/uau.png' %}" width="20" height="20"></p>                       
+                {% endif %}
+            </td>
+        </tr>
+        {%endfor%}
+        </tbody>    
+
+    </table>
+
+
+
+
+

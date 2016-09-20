@@ -1,0 +1,54 @@
+﻿
+{% block content %}
+
+<div id="news_id">   
+    Пользователь {{dir.user.username}} {% if flag_new_request %} отправил {% else %} отредактировал {% endif %} 
+    заявку на участие под номером: {{ req_parton.pk }}
+    <br/>
+
+    <table style="border: blue 1px solid;">
+            
+        <tr>
+            <td >Категория:</td><td >{{req_parton.category_output}}</td>
+        </tr>
+        <tr>
+            <td >Номинация:</td><td >{{ req_parton.nomination_output }}</td>
+        </tr>
+        <tr>
+            <td>Возрастная группа:</td><td>{{ req_parton.age_group_output }}</td>
+        </tr>
+        <tr>
+            <td>Подгруппа коллектива:</td><td>{{ req_parton.subgroup }}</td>
+        </tr>
+        <tr>
+            <td>Форма исполнения:</td><td>{{ req_parton.form_of_execution_output }}</td>
+        </tr>
+        <tr>
+            <td>Количество участников:</td><td>{{ req_parton.list_member }}</td>
+        </tr>
+        
+        <tr>
+            <td>Участник №1:</td>
+            <td>{% if req_parton.member1 %} {{ req_parton.member1 }} {% endif %} </td>
+        </tr>
+        <tr>
+            <td>Участник №2:</td>
+            <td>{% if req_parton.member2 %} {{ req_parton.member2 }} {% endif %} </td>
+        </tr>
+        <tr>
+            <td>Участник №3:</td>
+            <td>{% if req_parton.member2 %} {{ req_parton.member2 }} {% endif %} </td>
+        </tr>
+
+        <tr>
+            <td>Композиция:</td><td>{{ req_parton.composition_1 }}</td>
+        </tr>
+        
+               
+    </table> 
+      
+    {% include 'app/wrap_mail.html' %}          
+    
+</div>       
+  
+{% endblock %}

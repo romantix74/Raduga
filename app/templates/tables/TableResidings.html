@@ -1,0 +1,50 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<div id="TableResidingsID" class="table-responsive">
+{% include 'tables/TableResidingsChild.html' %}
+</div>
+
+<!-- Modal for button AddResidingModal -->
+<div class="modal fade" id="AddResidingModal" tabindex="-1" role="dialog" aria-labelledby="ResidingLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" id="AddorEditResidingFormId" action="{% url 'createOrEditResiding' 999999 %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ResidingLabel">Добавить/редактировать заявку</h4>
+                </div>
+                <div class="modal-body form-group-sm">
+                    {{formResiding.media}}
+                    {% crispy formResiding %}
+                </div>
+                <img class="loadImg" src="{% static 'app/images/ajax-loader.gif' %}"/>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal for button DelResidingModal -->
+<div class="modal fade" id="DelResidingModal" tabindex="-1" role="dialog" aria-labelledby="ResidingLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="delResidingFormId" class="form-horizontal" action="{% url 'deleteResiding' 999999 %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="DelModalLabel">Вы действительно хотите удалить заявку ?:</h4>
+                </div>
+                <div class="modal-body">
+
+                    {% csrf_token %}
+                    <ul class="form-group">
+                        <h4 id="DelResidingId"></h4>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn" value="Удалить">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+                <img class="loadImg" src="{% static 'app/images/ajax-loader.gif' %}"/>
+            </form>
+        </div>
+    </div>
+</div>

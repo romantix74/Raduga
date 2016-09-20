@@ -1,0 +1,39 @@
+﻿
+{% block content %}
+
+   
+    Пользователь {{dir.user.username}} {% if flag_new_request %} отправил {% else %} отредактировал {% endif %} 
+    заявку на питание под номером: {{ req_food.pk }}
+    <br/>
+
+    <table style="border: blue 1px solid;">
+            
+        <tr>
+            <td>МЕСТО ПРОЖИВАНИЯ:</td><td >{{req_food.place_of_residing}}</td>
+        </tr>
+        <tr>
+            <td>КОЛИЧЕСТВО ВЗРОСЛЫХ:</td><td >{{ req_food.quantity_adult }}</td>
+        </tr>
+        <tr>
+            <td>КОЛИЧЕСТВО УЧАСТНИКОВ:</td><td>{{ req_food.quantity_member }}</td>
+        </tr>
+        <tr>
+            <td>ДАТА:</td><td> {{ req_food.date|date:"Y-m-d" }} </td>
+        </tr>
+        <tr>
+            <td>ЗАВТРАК:</td><td> {% if req_food.zavtrak %} + {% endif %}</td>
+        </tr>
+        <tr>
+            <td>ОБЕД:</td><td>{% if req_food.obed %} + {%endif%}</td>
+        </tr>
+        <tr>
+            <td>УЖИН:</td><td>{% if req_food.ugin %} + {%endif%}</td>
+        </tr>
+        
+            
+               
+    </table> 
+      
+       
+  
+{% endblock %}

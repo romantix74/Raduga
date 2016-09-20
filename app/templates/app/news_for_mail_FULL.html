@@ -1,0 +1,70 @@
+﻿{% load staticfiles %}
+{% block content %}
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{{news.news_title}}</title>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody><tr>
+<td style="TEXT-ALIGN: center" width="100%">
+<table style="BORDER-BOTTOM: #808080 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #808080 1px solid; MARGIN: 0px auto; WIDTH: 600px; FONT-FAMILY: &#39;Times New Roman&#39;, Times, serif; BORDER-TOP: #808080 1px solid; BORDER-RIGHT: #808080 1px solid" border="0" cellspacing="0" cellpadding="0" width="600">
+<tbody><tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="0" width="600">
+<tbody><tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 231px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 231px; PADDING-TOP: 0px" height="280" width="231"><img src="http://cabinet.radugafest.com/{{news.foto.url}}" width="231" height="231"></td>
+<td height="231" width="369">
+<table border="0" cellspacing="0" cellpadding="0" width="369">
+<tbody><tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 371px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 80px; PADDING-TOP: 0px" height="80" width="371"><img src="http://cabinet.radugafest.com{% static 'app/images/news_mail_top.gif' %}" width="371" height="80"></td>
+</tr>
+<tr>
+<td style="TEXT-ALIGN: center; FONT-FAMILY: &#39;Times New Roman&#39;, Times, serif; COLOR: #ffffff; FONT-SIZE: 14px" bgcolor="#72a309" height="85">
+<div style="FONT-SIZE:28px">Международный конкурс-фестиваль "Радуга-танца"</div>
+<div style="FONT-SIZE:20px">Новости</div></td>
+</tr>
+<tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 371px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 65px; PADDING-TOP: 0px" height="65" width="371"><img src="http://cabinet.radugafest.com{% static 'app/images/news_mail_middle.gif' %}" width="371" height="65"></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td style="PADDING-BOTTOM: 25px; PADDING-LEFT: 25px; PADDING-RIGHT: 25px; COLOR: #414241; FONT-SIZE: 16px; PADDING-TOP: 25px">
+<p style="COLOR: #77a801"><strong>{{news.news_title}}</strong></p>
+<p>{{news.news}}</p></td>
+</tr>
+<tr>
+<td>
+<table style="COLOR: #666666; FONT-SIZE: 13px" border="0" cellspacing="0" cellpadding="5" width="600">
+    <tbody>
+    <tr>
+        <td style="PADDING-LEFT: 25px;">С уважением,</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="PADDING-LEFT: 25px;">Оргкомитет</td>
+        <td style="PADDING-LEFT: 25px;">Тел: 8-800-500-43-92</td>
+    </tr>
+    <tr>
+        <td style="PADDING-LEFT: 25px;">Международного конкурса-фестиваля</td>
+        <td style="PADDING-LEFT: 25px;">E-mail: dance@radugafest.com</td>
+    </tr>
+    <tr>
+        <td style="PADDING-LEFT: 25px;">"Радуга-танца" г. Чебоксары</td>
+        <td style="PADDING-LEFT: 25px;"><a href="http://radugafest.com">http://radugafest.com</a></td>
+    </tr>
+    </tbody>
+</table></td>
+</tr>
+<tr>
+<td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 600px; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 25px; PADDING-TOP: 0px" height="25" width="600"><img border="0" hspace="0" src="http://cabinet.radugafest.com{% static 'app/images/news_mail_bottom.gif' %}" width="600" height="25"></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table></body></html>
+
+
+{% endblock %}

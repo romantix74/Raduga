@@ -1,0 +1,42 @@
+﻿#generate_place_btn_id {
+    color: red;
+}
+
+.hover {
+    width:35px;
+}
+.hover > input {
+    width: inherit;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none!important;
+}
+
+.header_age_group {
+    margin-top: 10px;
+    background-color: #2ffff0;
+}
+
+.first_col1, .second_col1 {
+    width: 200px;
+}
+
+#changelist > table > tbody > tr > td {
+    width: 200px;
+}
+#SummaId {
+    color: red;
+    font-size: 27px;
+}
+
+/*индикация ожидания - загрузка фотки*/
+.loadImg{
+    position:absolute; 
+    z-index:1000; 
+    display:none
+}

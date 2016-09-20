@@ -1,0 +1,263 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row" id="resultsGranId">
+    <table class="table">
+        <thead>                        
+            <tr><td class="h4" colspan="4">ГРАН-ПРИ "РАДУГА-ТАНЦА KIDS". 50000р. </td></tr>  
+        </thead>
+        <tbody>                          
+            
+            <tr>    
+                <td class="text-center"><small>Детский ансамбль эстрадного танца "Планета" г.Йошкар-Ола</small></td>                     
+            </tr> 
+                        
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>                        
+            <tr><td class="h4" colspan="4">ГРАН-ПРИ "РАДУГА-ТАНЦА". 50000р. </td></tr>  
+        </thead>
+        <tbody>                          
+            
+            <tr>    
+                <td class="text-center"><small>Детский ансамбль эстрадного танца "Планета" г.Йошкар-Ола</small></td>                     
+            </tr> 
+                        
+        </tbody>
+    </table>
+    
+</div>
+
+{#<div class="row">#}    
+<div class="row" id="resultsId">          
+    
+
+    <table class="table">
+        <thead>                        
+            <tr ><td class="h4" colspan="5">Возрастная группа до 7 лет.</td></tr>  
+        </thead>
+        <tbody>                          
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ до 7 лет</td></tr>
+            {% for list_part in age_0_7_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="5">НАРОДНЫЙ ТАНЕЦ до 7 лет</td></tr>
+            {% for list_part in age_0_7_narod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СЮЖЕТНО-ИГРОВОЙ ТАНЕЦ до 7 лет<td></tr>
+            {% for list_part in age_0_7_suget_igrovoi %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+                        
+        </tbody>
+    </table>
+    <br/>
+    
+
+    <table class="table">
+        <thead>                        
+            <tr ><td class="h4" colspan="5">Возрастная группа 8-10 лет.</td></tr>  
+        </thead>        
+        <tbody>                 
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ 8-10 лет</td></tr>
+            {% for list_part in age_8_10_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="5">НАРОДНЫЙ ТАНЕЦ 8-10 лет</td></tr>
+            {% for list_part in age_8_10_narod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СЮЖЕТНО-ИГРОВОЙ ТАНЕЦ 8-10 лет<td></tr>
+            {% for list_part in age_8_10_suget_igrovoi %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+                
+        </tbody>
+    </table>
+    <br/>
+
+    <table class="table">
+        <thead>                        
+            <tr ><td class="h4" colspan="5">Возрастная группа: смешанная KIDS.</td></tr>  
+        </thead> 
+        <tbody>         
+                
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ, СМЕШАННАЯ</td></tr>
+            {% for list_part in age_hybrid_kids_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="5">НАРОДНЫЙ ТАНЕЦ, СМЕШАННАЯ</td></tr>
+            {% for list_part in age_hybrid_kids_narod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            
+             
+        </tbody>
+    </table>
+
+    
+    <table class="table">
+        <thead>
+            <tr ><td class="h4" colspan="5">Возрастная группа 11-14 лет.</td></tr>                   
+        </thead>
+        <tbody>              
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ 11-14 лет</td></tr>
+            {% for list_part in age_11_14_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="5">НАРОДНЫЙ ТАНЕЦ 11-14 лет</td></tr>
+            {% for list_part in age_11_14_narod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">НАРОДНЫЙ ТАНЕЦ СТИЛИЗАЦИЯ 11-14 лет<td></tr>
+            {% for list_part in age_11_14_narod_style %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (модерн) 11-14 лет<td></tr>
+            {% for list_part in age_11_14_sovremen_svobod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (hip-hop) 11-14 лет<td></tr>
+            {% for list_part in age_11_14_sovremen_ulica %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">ВЕЛИКОЙ ПОБЕДЕ ПОСВЯЩАЕТСЯ 11-14 лет<td></tr>
+            {% for list_part in age_11_14_spec %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+        </tbody>
+    </table>
+
+    
+    <table class="table">
+        <thead>
+            <tr ><td class="h4" colspan="5">Возрастная группа 15-18 лет.</td></tr>                   
+        </thead>
+        <tbody>   
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ 15-18 лет</td></tr>
+            {% for list_part in age_15_18_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (модерн) 15-18 лет<td></tr>
+            {% for list_part in age_15_18_sovremen_svobod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (hip-hop) 15-18 лет<td></tr>
+            {% for list_part in age_15_18_sovremen_ulica %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">ВЕЛИКОЙ ПОБЕДЕ ПОСВЯЩАЕТСЯ 15-18 лет<td></tr>
+            {% for list_part in age_15_18_spec %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+                
+        </tbody>
+    </table>
+    
+    
+    <table class="table">
+        <thead>
+            <tr ><td class="h4" colspan="5">Возрастная группа 18-25 лет.</td></tr>                  
+        </thead>
+        <tbody>               
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ 18-25 лет</td></tr>
+            {% for list_part in age_18_25_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="5">НАРОДНЫЙ ТАНЕЦ 18-25 лет</td></tr>
+            {% for list_part in age_18_25_narod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+             
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (модерн) 18-25 лет<td></tr>
+            {% for list_part in age_18_25_sovremen_svobod %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (hip-hop) 18-25 лет<td></tr>
+            {% for list_part in age_18_25_sovremen_ulica %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+ 
+        </tbody>
+    </table>
+
+    
+    <table class="table">
+        <thead>
+            <tr ><td class="h4" colspan="5">Возрастная группа: Смешанная.</td></tr>                   
+        </thead>
+        <tbody>              
+                
+            <tr><td colspan="5">ЭСТРАДНЫЙ ТАНЕЦ, СМЕШАННАЯ</td></tr>
+            {% for list_part in age_hybrid_adults_estrada %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            
+            
+            <tr><td colspan="4">СОВРЕМЕННЫЙ ТАНЕЦ (hip-hop), СМЕШАННАЯ<td></tr>
+            {% for list_part in age_hybrid_adults_sovremen_ulica %}
+                {% for part in list_part %}
+                    {% include 'admin/app/grafic_body_results.html' %}
+                {% endfor %}
+            {% endfor %}  
+            
+        </tbody>
+    </table>
+
+</div> 
+{#</div>#}
+    
+
+
+{% endblock %}

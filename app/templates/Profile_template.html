@@ -1,0 +1,24 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container1">
+    <div class="row" id="profile_id">        
+        <form class="form-horizontal" role="form" id="EditDirectorFormId" action="{% url 'editDir' %}" method="post" enctype="multipart/form-data">
+            <div class="modal-header">                
+                <h4 class="modal-title text-center">Остался один шаг, чтобы закончить регистрацию. Заполните все поля.</h4>
+            </div>
+            <div class="modal-body form-group-sm center-block">
+                {% csrf_token %}
+                <ul>
+                    {% crispy formEditDir %}
+                </ul>
+            </div>
+                                    
+        </form>
+        
+        
+    </div>
+</div>
+
+{% endblock %}

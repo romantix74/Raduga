@@ -1,0 +1,37 @@
+﻿
+{% block content %}
+
+    <br/><br/>
+
+    Информация о коллективе:
+    <table style="border: blue 1px solid;">          
+        <tr>              
+            <td>КОЛЛЕКТИВ:</td><td>{{dir.groupName}}</td>
+        </tr>
+        <tr>              
+            <td>СТРАНА:</td><td>{{dir.country}}</td>
+        </tr>
+        <tr>              
+            <td>ГОРОД н.п:</td><td>{{dir.city}}</td>
+        </tr>
+        <tr>              
+            <td>РУКОВОДИТЕЛЬ:</td><td>{{dir.director}}</td>
+        </tr>
+        <tr>              
+            <td>ПЕДАГОГ/ХОРЕОГРАФ:</td><td>{{dir.teacher}}</td>
+        </tr>
+        <tr>              
+            <td>ТЕЛЕФОН:</td><td>{{dir.phoneNumber}}</td>
+        </tr>
+        <tr>              
+            <td>E-MAIL:</td><td>{{dir.email}}</td>
+        </tr>
+        <tr>              
+            <td>УЧРЕЖДЕНИЕ:</td><td>{{dir.institution}}</td>
+        </tr>
+        <tr>              
+            <td>САЙТ:</td><td>{{dir.site}}</td>
+        </tr>
+    </table>     
+  
+{% endblock %}

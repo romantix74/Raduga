@@ -1,0 +1,51 @@
+﻿{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<div id="TableExcursionsID" class="table-responsive">
+{% include 'tables/TableExcursionsChild.html' %}
+</div>
+
+<!-- Modal for button AddExcursionsModal -->
+<div class="modal fade" id="AddExcursionModal" tabindex="-1" role="dialog" aria-labelledby="ExcursionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal" id="AddorEditExcursionFormId" action="{% url 'createOrEditExcursion' 999999 %}" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="ExcursionLabel">Добавить заявку</h4>
+                    </div>
+                    <div class="modal-body form-group-sm center-block">
+                        {{formExcursion.media}}
+                        <div id="ulExcursionId">
+                            {% crispy formExcursion %}
+                        </div>
+                    </div>
+                    <img class="loadImg" src="{% static 'app/images/ajax-loader.gif' %}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- Modal for button DelExcursionsModal -->
+<div class="modal fade" id="DelExcursionModal" tabindex="-1" role="dialog" aria-labelledby="ExcursionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="delExcursionFormId" class="form-horizontal" action="{% url 'deleteExcursion' 999999 %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="DelExcursionLabel">Вы действительно хотите удалить заявку ?:</h4>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <ul class="form-group">
+                        <h4>Под номером</h4><h4 id="DelExcursionId"></h4>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn" value="Удалить заявку">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+                <img class="loadImg" src="{% static 'app/images/ajax-loader.gif' %}"/>
+            </form>
+        </div>
+    </div>
+</div>

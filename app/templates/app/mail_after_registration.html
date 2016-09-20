@@ -1,0 +1,43 @@
+﻿
+{% block content %}
+{#<link rel="stylesheet" type="text/css" href="http://cabinet.radugafest.com/static/app/content/bootstrap.min.css" />#}
+<div id="news_id">
+    {#{%for one_news in news%}#}
+    
+    <div class="row">
+        <div class="col-md-4">
+            {% if news.foto %}
+            <img id="profile_image" src="http://cabinet.radugafest.com/{{news.foto.url}}" alt="фото новости" class="img-responsive center-block"/>   
+            {% endif %}     
+        </div>
+        <div class="col-md-8">
+            <div class="news-name">
+                <h4 class="text-left">{{news.news_title}}</h4>
+            </div>            
+            <span class="hidden" style="white-space: pre-wrap;">{{news.news|urlize}}</span>   
+            <br/>
+            <span class="pull-right">
+                {{one_news.date_creation}}                
+            </span> 
+            
+            <br/>
+            <br/>
+            <span align="right">
+                <span><a href="http://cabinet.radugafest.com/">Личный кабинет </a></span>
+                <br/>
+                <span> <a href="http://cabinet.radugafest.com/reglament">Положение</a></span>
+                <br/>
+                <span> <a href="http://radugafest.com/">Официальный сайт</a></span>
+                <br/>
+                <span>Телефон оргомитета: 8-800-500-43-92(бесплатно по России)</span>
+                <br/>
+                <span>Mail: dance@radugafest.com</span> 
+                <br/>
+            </span>
+        </div>       
+    </div>
+    <br/>
+    {#{%endfor%}#}
+</div>
+
+{% endblock %}

@@ -1,0 +1,436 @@
+﻿body {    
+    /*padding-top: 0px;*/
+    /*padding-bottom: 20px;*/
+    /*background-image: url(../images/bg.jpg);*/    
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    /*background-size: 100%;*/
+    color : #0077bb;
+    
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    body  {margin-top:-20px; }/*chrome hack*/
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+/*индикация ожидания - загрузка фотки*/
+.loadImg{
+    position:absolute; 
+    z-index:1000; 
+    display:none
+}
+/* Set width on the form input elements since they're 100% wide by default */
+.deleteAfterResubmit,
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+    max-width: 90%;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.thead {
+    background: #999;
+}
+
+.container {
+    width: 65%;
+}
+
+#footer {
+    background: #999999       
+}
+
+.nav > li > a {
+    display: block;
+    padding: 15px 8px;
+    position: relative;    
+}
+.nav > li > a:hover  {
+    color: #bb1200 !important;   
+    background-color: inherit !important;
+}
+.navbar-fixed-top {
+    height : 50px;
+}
+.navbar-fixed-top > .container {
+    height : inherit;
+}
+
+#layout_phone {
+    display: inline;
+}
+
+#header {
+    background-color: #0077bb;
+    color: rgb(255,255,255);
+    margin-bottom : 5px;
+    border-radius: 0 0 20px 20px;
+    height: 50px !important;
+}
+#header li > img {
+    margin-top: 7px;
+    margin-left: 13px;
+}
+#header > .nav > li > a {
+    color: inherit;
+    font-size: 13px;
+}
+#header > form > .nav > li > a {
+    color: inherit;
+    font-size: 13px;
+}
+#header > form  {
+    margin-right: 10px !important;    
+}
+#header .nav span {
+    color: inherit !important;
+}
+#header .nav .navbar-brand {
+    font-size: 13px;
+}
+
+#phone_id {
+    margin-top : 8px !important;
+    margin-right: 10px;
+}
+
+#tblProfile > thead {
+    border: 1px solid #0077bb;
+    /*border-color: #0077bb;*/
+    color: rgb(255,255,255);
+    background-color: #0077bb;
+    
+}
+#tblProfile > tbody tr td:nth-child(1) {
+    color : #0077bb;
+}
+
+#profile_block {
+    display: flex;
+    display: -webkit-flex;      /*-webkit-box;*/
+    display: -ms-flexbox;
+    /*margin-top: -15px;*/
+    /*max-height: 320px;*/
+}
+#profile_block .col-md-6 {
+    height: 330px;    
+}
+/*#profile_block .table-name {
+    cursor: default;
+}*/
+#Profile_table_name_id {
+    height: 34px;
+    cursor: default;
+    border: 1px solid #0077bb;    
+    color: rgb(255,255,255);
+    background-color: #0077bb;    
+    margin-bottom: 5px;
+    border-radius: 0 0 10px 10px; 
+       
+}
+#Profile_table_name_id h4 {
+    margin: 7px 10px;
+}
+#Profile_table_name_id > h4 > span > img {
+    position: absolute;
+    display: block;
+    background-color: #0077bb;
+    position: absolute;
+}
+
+
+#profile_image {
+    padding-right : 2px;
+    background-size: cover;    
+    height: 100%;
+    width: 100%;
+    align-content: stretch;   
+    position: relative;  
+}
+
+#profile_image_btn {   
+    margin-top : -40px;
+    /*overflow: hidden;*/
+    background-color: gray;   
+    margin-right: 2px;
+    opacity: 0.8;
+    position: relative;
+    z-index: -10;
+    
+}
+#profile_image_btn > span {
+    color: white !important;
+}
+
+#profile > div {
+    padding-left : 2px;
+    align-content: stretch;
+    margin-top: -20px;   
+}
+#profile span {
+    cursor: pointer;
+}
+
+/*.editableTable { border:solid 1px; width:100% }*/ 
+/*.editableTable td { border:solid 1px; }*/ 
+
+/*.editableTable .cellEditing { padding: 0; }*/ 
+
+/*.editableTable .cellEditing input[type=text]{ width:100%; border:0; background-color:rgb(255,253,210); }*/
+
+
+/*не нужно , это есть по умолчанию в бутсрапе 2016.08.24*/
+/*.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+
+
+.table-name {
+    border: 1px solid #0077bb;    
+    color: rgb(255,255,255);
+    background-color: #0077bb;    
+    margin-bottom: 5px;
+    border-radius: 0 0 10px 10px;     
+    cursor: pointer;   
+}
+.table-responsive {
+    margin-top: -4px;
+}
+
+.reglament-name {
+    border: 1px solid #0077bb;    
+    color: rgb(255,255,255);
+    background-color: #0077bb;    
+    margin-bottom: 5px;
+    border-radius: 0 0 10px 10px;     
+    cursor: pointer;   
+}
+.reglament-body  {
+    color: black;
+}
+
+#news_id > div {
+    border: 1px solid #0077bb;
+    border-radius: 10px;  /*0 10px 10px;*/
+    margin: 0 0;
+    /*display: flex;*/
+    width: 100%;
+}
+#news_id > div img {
+    /*padding: 3px;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.news-name {
+    text-decoration: underline;   
+}
+.news-name ~ span {
+    color: black !important;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    white-space: pre-wrap;
+}
+.news-name ~ span:last-child {
+    color:  #878787 !important;
+}
+.news_detailed {
+    color: inherit !important;
+}
+.ya-share2 {
+    padding: 10px;
+}
+
+.table-name h4 {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+.table-name h4 > img {
+    margin-bottom:3px;
+    margin-right: 10px;
+}
+
+.table-name h4 span {    
+    position:relative; 
+    margin:0 auto; 
+    /*margin-right: 10px;*/
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    overflow: hidden;
+    
+}
+.table-name > h4 > span > img {
+    position: absolute;
+    display: block;
+    background-color: #0077bb;    
+    position: absolute;
+}
+
+.table-name > h4 > span:hover img:nth-child(1) {
+    z-index: 10;
+    /*margin-top: -40px;*/
+    background-color: #0077bb;
+}
+
+.table-sum {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.table {
+    max-width: 100%;
+    border-color: #0077bb;
+}
+.table tbody td {
+    color: black;
+}
+.thead {
+    background-color: rgb(255,255,255);
+}
+.table > thead > tr > td {
+    border-color: #0077bb;
+}
+.table > tbody > tr > td {
+    border-color: #0077bb;
+}
+td {
+    font-size: 11px;
+    font-family: verdana,tahoma, arial, sans-serif, Lucida Sans;
+}
+/*последние элементы для иконок делаем одинаковыми*/
+.table > tbody > tr > td:last-child {
+    width : 20px;
+}
+.table > tbody > tr > td:nth-last-child(2) {
+    width : 20px;
+}
+.table > tbody > tr > td:nth-last-child(3) {
+    width : 20px;
+}
+
+#tblProfile::after {
+    content: "";
+    display: none;  
+    height: 0px;  
+}
+
+
+/*для страницы профиля*/
+#profile_id label,span {
+    color: #0077bb !important;
+}
+
+#profile_id .form-control {
+    border: 1px solid #ccc;
+}
+
+/*форма регистрации - капча*/
+#id_captcha_1 {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    height: 30px;
+}
+#hint_id_username {
+    display: none;
+}
+#hint_id_password2 {
+    display: none;
+}
+
+#resultsId {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#resultsId > table > thead td {
+    background-color: #0077bb;
+    color: white;
+}
+
+#resultsId > table > tbody > tr > td[colspan='5'],td[colspan='4'] {
+    background-color: hsla(0, 0%, 60%, 0.33);
+}
+#resultsId > table > tbody > tr > td[colspan='4'] + td {
+    background-color: hsla(0, 0%, 60%, 0.33);
+}
+
+#resultsId > table {
+    margin-bottom: 2px;
+}
+
+#resultsGranId {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#resultsGranId > table > thead td{
+    background-color: #0077bb;
+    color: white;
+}
+
+#resultsGranId > table {
+    margin-bottom: 2px;
+    background-color: hsla(0, 0%, 60%, 0.33);
+}
+
+#resultsGranId > table > tbody > tr > td:first-child {
+    width: 200px;
+}
+
+#resultsGranId > table > tbody > tr * {
+    font-size: 14px !important;
+}
+
+/*foto gallery*/
+#foto_body_id > div > p {
+    border: 1px solid black;
+    background-color: #0077bb;
+    color: white;
+}
+
+
+
+
