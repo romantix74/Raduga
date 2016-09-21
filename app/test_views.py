@@ -34,22 +34,28 @@ class MainPageViewTest(TestCase):
 # тест заполнения формы и  редактирования Руководителя
 class EditDirTest(ResourceTestCaseMixin, TestCase):
     def setUp(self):
-        super(EditDirTest, self).setUp()
-        self.user = User.objects.create_user('dir', 'lennon@thebeatles.com', 'johnpassword') #Director.objects.create( pk = 1 )
-        #self.user.last_login = datetime.now()
-        self.user.save()
-        self.new_dir = Director(user = self.user)
-        #self.new_dir.user = self.user      
-        self.new_dir.director = u'Иванов И.И.'         
-        self.new_dir.save(); 
-        self.client.force_login(self.user)
+        super(EditDirTest, self).setUp()      
+        # Create a user.
+        self.username = 'dir'
+        self.password = 'pass'
+        self.user = User.objects.create_user(self.username, 'daniel@example.com', self.password)
+        self.client.login( username=self.username, password=self.password)
+
+    # для аутентификации , взял из примера на сайте http://django-tastypie.readthedocs.io/en/latest/testing.html
+    def get_credentials(self):
+        return self.create_basic(username=self.username, password=self.password)
 
     def test_edit_dir_filling_form(self):
-        response = self.client.get(reverse('editDir'), format='json')
-        #response = self.api_client.get(reverse('editDir'), format='json', authentication=self.user)
+        #response = self.client.get(reverse('editDir'), format='json')
+        resp = self.client.get('/api/v1/director/', data={'format': 'json'})
+        self.assertEqual(resp.status_code, 200)
+        #resp = self.api_client.get('/api/v1/director/', format='json', authentication=self.get_credentials())
+        self.assertValidJSONResponse(resp)
+
+        #response = self.api_client.get('/api/v1/director/', format='json', authentication=self.user)
         #self.assertValidJSONResponse(response)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['director'], self.new_dir.director)        
+        #self.assertEqual(response.status_code, 200)
+        #self.assertEqual(response.context['director'], self.new_dir.director)        
 
 # тест заполнения формы и  редактирования Руководителя
 #class EditDirTest(TestCase):

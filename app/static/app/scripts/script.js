@@ -118,13 +118,15 @@
     
     //заполняем форму , НО НЕ ВСЕ поля (нужно для кладр) , а только регион , город 
     $('#EditDirectorModal').on('shown.bs.modal', function () {
-        var _url = $(this).find('form').attr("action");        
+        //var _url = $(this).find('form').attr("action");        
+        var _url = "/api/v1/director/";   // работает через tastypie 2016.09.21 
         $.ajax({
             url: _url,
             dataType: 'json',
-            success: function (data) {                
-                var _data = $.parseJSON(data);
-                _data = _data[0].fields;
+            success: function (data) {
+                console.log(data);
+                //var _data = $.parseJSON(data);                
+                _data = data.objects[0]; //_data[0].fields;
                 console.log(_data);
                 $region.kladr('controller').setValue(_data['region']);
                 $city.kladr('controller').setValue(_data['city']);

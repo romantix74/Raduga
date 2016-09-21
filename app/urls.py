@@ -1,4 +1,4 @@
-﻿from django.conf.urls import patterns, include, url
+﻿from django.conf.urls import  include, url 
 #from app.views import CreateResidingView , UpdateResidingView
 from django.views.generic import TemplateView
 import app.views

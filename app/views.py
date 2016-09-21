@@ -339,7 +339,7 @@ def homeAng(request):   # Angular version
 def home(request): 
         
     _user = auth.get_user(request)
-    print '-----begin home----'
+   
     if _user.is_superuser:
         return redirect('/admin')
     if not _user.is_authenticated():

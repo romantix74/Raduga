@@ -15,7 +15,7 @@ from sorl.thumbnail.admin import AdminImageMixin
 
 # рендеринга свей страницы с Графиками выступлений 2016.03.28
 from django.shortcuts import render, render_to_response, redirect , get_object_or_404
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from datetime import datetime
 from django.contrib import auth
