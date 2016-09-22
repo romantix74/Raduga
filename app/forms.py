@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from models import CommonModel,Member, Participation, Director, Residing, Transfer, \
                     Excursion, Subgroup_choices, Place_departure_choices, Food, Mails
-from django.forms.extras.widgets import SelectDateWidget
+from django.forms.widgets import SelectDateWidget #django.forms.extras.widgets
 #from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 from django.forms import widgets
 from crispy_forms.helper import FormHelper

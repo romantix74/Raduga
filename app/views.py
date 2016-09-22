@@ -4,7 +4,7 @@ Definition of views.
 """
 
 from django.shortcuts import render, render_to_response ,redirect , get_object_or_404 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse #django.urls import reverse # waiting to 1.10.
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.http import HttpRequest
 from django.template import RequestContext , Context

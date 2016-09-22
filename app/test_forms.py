@@ -4,17 +4,17 @@
 import django
 from django.test import TestCase
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse #django.urls import reverse # waiting to 1.10.
 
 from datetime import datetime
 from app.forms import MemberForm
 
 
-class MainPageForms(TestCase):
-    """ Main page forms test"""
+#class MainPageForms(TestCase):
+#    """ Main page forms test"""
 
-    def setUp(self):
-        self.form = MemberForm()
+#    def setUp(self):
+#        self.form = MemberForm()
 
     #def test_member_form(self):
     #    self.form = MemberForm()        

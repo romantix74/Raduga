@@ -144,12 +144,13 @@ class Director(models.Model):
         verbose_name_plural = u'руководители'
 
     #user = models.ForeignKey('auth.User')
-    user                = models.OneToOneField('auth.User', primary_key=True)
+    user                = models.OneToOneField('auth.User', primary_key=True, on_delete=models.CASCADE,)
     foto                = models.FileField(blank = True, null = True) #upload_to='./uploads/')
     groupName           = models.CharField(max_length=200, verbose_name=u'Коллектив')
     #country             = models.CharField(max_length=200, verbose_name=u'Страна')
     country             = models.ForeignKey(Country, verbose_name=u'Страна',
-                                max_length = 50, blank = True, null = True ) 
+                                max_length = 50, blank = True, null = True,
+                                on_delete=models.CASCADE, ) 
     region              = models.CharField(max_length=200, verbose_name=u'Регион')
     city                = models.CharField(max_length=200, verbose_name=u'Город н/п.')
     street              = models.CharField(max_length=200, verbose_name=u'Улица')
@@ -195,7 +196,7 @@ class CommonModel(models.Model):
     class Meta:
         abstract = True
         managed = True # странный ключ , если тру, то джанго может управлять таблицами (по умолчанию тру вроде 28.03.16)
-    user = models.ForeignKey(Director)      #('auth.User') 
+    user = models.ForeignKey(Director, on_delete=models.CASCADE,)      #('auth.User') 
     status = models.CharField( verbose_name = u'Статус', max_length = 100, choices = Approval_choices,
                                 blank = True, null = True )
     # комментарии менеджера-админа 
@@ -263,7 +264,7 @@ class Member(CommonModel):     #(models.Model):
 
 #используется в Participation
 class Subgroup_choices(models.Model):
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
     subgroup_name = models.CharField( max_length = 100)        
     def __unicode__(self):    
         return self.subgroup_name
@@ -314,7 +315,8 @@ class Participation(Common_with_finance_Model):
     def age_group_output(self):
         return self.get_age_group_display()     
     subgroup = models.ForeignKey(Subgroup_choices, verbose_name=u'Подгруппа коллектива',
-                                max_length = 30, blank = True, null = True ) 
+                                max_length = 30, blank = True, null = True,
+                                on_delete=models.CASCADE, ) 
     #def subgroup_output(self):
     #    return self.get_subgroup_display()
     form_of_execution_choices = (
@@ -419,7 +421,8 @@ class Residing(Common_with_finance_Model):
     )
     #place_of_residing = models.CharField(verbose_name=u'Место проживания', max_length = 30, choices = place_of_residing_choices )   
     place_of_residing = models.ForeignKey(Place_residing_choices,
-                                          verbose_name=u'Место проживания', max_length = 30 )   
+                                            verbose_name=u'Место проживания', max_length = 30,
+                                            on_delete=models.CASCADE, )   
     def place_of_residing_output(self):
         return self.get_place_of_residing_display()
     quantity_total    = models.IntegerField(verbose_name=u'Общее количество проживающих')
@@ -473,7 +476,7 @@ class Residing(Common_with_finance_Model):
 
 # используеться в Трансфера и Экскурсиях для мест отбытия и прибытия одновременно
 class Place_departure_choices(models.Model):
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
     place_name = models.CharField( max_length = 100)
     description = models.TextField(blank = True, null = True)
     #def __str__(self):              # __unicode__ on Python 2
@@ -492,11 +495,13 @@ class Transfer(Common_with_finance_Model):
     place_departure = models.ForeignKey(Place_departure_choices, 
                                         verbose_name=u'Место отбытия', max_length = 30,
                                         related_name = 'place_departure', 
-                                        null = True,  blank = True )    
+                                        null = True,  blank = True,
+                                        on_delete=models.CASCADE, )    
     place_arrival   = models.ForeignKey(Place_departure_choices, 
                                         verbose_name=u'Место прибытия', max_length = 30, 
                                         related_name = 'place_arrival',
-                                        null = True,  blank = True )
+                                        null = True,  blank = True,
+                                        on_delete=models.CASCADE, )
     def place_arrival_output(self):
         return self.get_place_arrival_display()
     quantity_total  = models.IntegerField(verbose_name=u'Количество общее')   
@@ -568,11 +573,13 @@ class Excursion(Common_with_finance_Model):
     #place_departure = models.CharField(verbose_name=u'Место отбытия', max_length = 30)
     place_departure = models.ForeignKey(Place_departure_choices , verbose_name=u'Место отбытия',
                                         related_name = 'ex_place_departure',
-                                        max_length = 30, null = True, blank = True )
+                                        max_length = 30, null = True, blank = True,
+                                        on_delete=models.CASCADE, )
     #place_arrival = models.CharField(verbose_name=u'Место прибытия', max_length = 30)
     place_arrival = models.ForeignKey(Place_departure_choices, verbose_name=u'Место прибытия', 
-                                      related_name = 'ex_place_arrival',
-                                      max_length = 30, null = True,  blank = True )
+                                        related_name = 'ex_place_arrival',
+                                        max_length = 30, null = True,  blank = True,
+                                        on_delete=models.CASCADE, )
     quantity_total = models.IntegerField(verbose_name=u'Количество общее')   
     quantity_adult = models.IntegerField(verbose_name=u'Количество взрослых')
     quantity_member = models.IntegerField(verbose_name=u'Количество участников')
@@ -618,7 +625,8 @@ class Food(Common_with_finance_Model):
         verbose_name_plural = u'заявки на питание'
     
     place_of_residing = models.ForeignKey(Place_residing_choices,
-                                          verbose_name=u'Место проживания', max_length = 30 )   
+                                            verbose_name=u'Место проживания', max_length = 30,
+                                            on_delete=models.CASCADE, )   
     def place_of_residing_output(self):
         return self.get_place_of_residing_display()
     quantity_total  = models.IntegerField(verbose_name=u'Общее количество',blank=True, null=True)
@@ -714,7 +722,7 @@ def make_foto_upload_path(instance, filename):
     return u"images/%s-%s" % (instance.user.groupName, instance.user.id) # filename)
 class Foto(models.Model):
     title = models.CharField("Название фотографии", max_length=100)
-    album = models.ForeignKey(Album, verbose_name='Альбом')
+    album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE)
     image = models.ImageField("Фото", upload_to = 'images',
                               blank = True, null = True,
 	                          help_text='Желательно, чтоб фото было не большого размера')
