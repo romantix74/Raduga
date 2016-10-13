@@ -1,0 +1,28 @@
+﻿{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <h4 class="text-center col-md-12">ФОТО ГАЛЛЕРЕЯ</h4>
+</div>
+
+<div id="video_body_id" class="row" ng-controller="VideoCtrl as ctrl">
+    <div class="col-md-3">       
+        <p ng-repeat="album in albums" ng-click="getVideo(album.id)" >{$ album.title $}</p>
+    </div>
+    <div class="col-md-9">
+        <div><h3>{$ current_album_name $}</h3></div>
+        <div class=""  >       
+            <a ng-repeat="vid in videos" href="" title="Foto" data-gallery>
+                {$ vid.title $}
+                <iframe width="480" height="360" src="{$ vid.video_link $}" frameborder="0" allowfullscreen></iframe>
+                {#<iframe width="560" height="315" src="https://www.youtube.com/watch?v="+{$ vid.video_link $} frameborder="0" allowfullscreen></iframe>#}
+                {#<img ng-src="{$ image.image_small $}" alt="Foto">#}
+            </a>            
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

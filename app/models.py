@@ -716,11 +716,19 @@ class Album(models.Model):
                             help_text='Размер изображения 200px на 200px')    
     def __unicode__(self):
         return self.title
+
 #Фотографии в альбоме
 # имя файлов и полный путь для сохранения
 def make_foto_upload_path(instance, filename):
     return u"images/%s-%s" % (instance.user.groupName, instance.user.id) # filename)
+
 class Foto(models.Model):
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'Фото'
+        verbose_name_plural = "Фотографии"
+
     title = models.CharField("Название фотографии", max_length=100)
     album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE)
     image = models.ImageField("Фото", upload_to = 'images',
@@ -729,9 +737,21 @@ class Foto(models.Model):
     image_small = ImageSpecField(source='image', 
                                  processors = [ResizeToFill(120, 80)], 
                                  format ='JPEG', options={'quality': 90}, )
+    
+    def __unicode__(self):
+        return self.title
+
+class Video(models.Model):
+
     class Meta:
         ordering = ['title']
-        verbose_name = 'Фото'
-        verbose_name_plural = "Фотографии"
+        verbose_name = u'Видео'
+        verbose_name_plural = u'Видео'
+
+    title = models.CharField("Название видео", max_length=100)
+    album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE)
+    video_link = models.CharField("Видео",  max_length=200, 
+                              blank = True, null = True,)  # help_text='Желательно, чтоб фото было не большого размера')  
+    
     def __unicode__(self):
         return self.title

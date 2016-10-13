@@ -320,6 +320,9 @@ class DirectorUploadFile(forms.ModelForm):
         model = Director
         fields = ['foto']
 
+
+from app.tasks import add
+#import app.tasks.add
 class DirectorEditForm(forms.ModelForm):
     #class Media:
     #    css = {
@@ -368,6 +371,9 @@ class DirectorEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DirectorEditForm, self).__init__(*args, **kwargs)
         setup_bootstrap_helpers(self, 'id-DirectorEditForm')
+
+        add.delay(2,567)
+
         #self.helper = FormHelper(self)
         #self.helper.form_id = 'id-DirectorEditForm'
         #self.helper.form_class = 'form-horizontal'        

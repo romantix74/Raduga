@@ -111,7 +111,7 @@ def generate_diplom( parton , _count):
     print file_path
     img.save(file_path)
 
-# копирование музыки для ранддомного графика
+# копирование музыки для рандомного графика
 def _cp_music(_qset = None):
     
     folder_uploads = path.join(settings.PROJECT_ROOT,'uploads')

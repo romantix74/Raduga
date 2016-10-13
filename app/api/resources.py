@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from tastypie.resources import ModelResource
 from tastypie import fields
-from app.models import Album, Foto, Director
+from app.models import Album, Foto, Video, Director
 
 from tastypie.authentication import BasicAuthentication, SessionAuthentication
 from tastypie.authorization import DjangoAuthorization, Authorization
@@ -32,6 +32,19 @@ class FotoResource(ModelResource):
         # добавляем поле с превьюшками , потому что оно не сериализируеться
         bundle.data['image_small'] = bundle.obj.image_small.url
         return bundle
+
+class VideoResource(ModelResource):
+    #album_id = fields.ToOneField(AlbumResource, 'album', full=True )
+    album_id = fields.ForeignKey(AlbumResource, 'album',full=True)
+    class Meta:
+        queryset = Video.objects.all()
+        fields = ['title', 'album', 'video_link']
+        resource_name = 'video'
+        allowed_methods = ['get']
+        include_resource_uri = False
+        filtering = {
+            'album_id': ALL_WITH_RELATIONS,   
+        }
 
 class DirectorResource(ModelResource):
     class Meta:

@@ -57,4 +57,44 @@
         };       
     });
 
+
+    //VIDEO GALLERY
+    app.controller("VideoCtrl", function ($scope, $http) {
+        $scope.albums;
+        $scope.current_album_name = [];
+        $scope.videos = {};
+
+        $http.get("/api/v1/album/")
+            .then(function successCallback(response) {
+                $scope.albums = response.data.objects;
+                console.log($scope.albums);
+                // заместо init , сначала находим id последнего фестиваля                
+                $scope.last_album_id = $scope.albums[0].id;
+                $scope.getVideo($scope.last_album_id);
+            },
+            function errorCallback(response) {
+                console.log("error in angular foto " + response);
+            });
+
+        // get videos from album
+        $scope.getVideo = function(album_id) {
+            console.log("--inside album_id get--");
+            console.log(album_id);
+
+            // find album_title by id            
+            $scope.current_album_name = jQuery.grep($scope.albums, function (obj) {
+                return obj.id === album_id;
+            })[0].title;
+
+            $http.get("/api/v1/video/?album_id__id=" + album_id)
+                .then(function successCallback(response) {
+                    $scope.videos = response.data.objects;
+                    console.log($scope.videos);
+                },
+                function errorCallback(response) {
+                    console.log("error in get foto from album ");
+                    console.log(response);
+                });
+        };
+    });
 })();

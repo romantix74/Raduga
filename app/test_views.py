@@ -67,6 +67,7 @@ class VideoViewTests(TestCase):
         response = self.client.get(reverse('video'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['year'], datetime.now().year)
+        self.assertTemplateUsed(response, 'app/video_gallery.html')
 
 class FotoViewTest(TestCase):
     """ Foto gallery page"""

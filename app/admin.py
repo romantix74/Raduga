@@ -7,7 +7,7 @@ from django.contrib.admin import AdminSite
 from models import Member, Country, Director, News, Reglaments, Participation, \
                     Place_residing_choices, Residing, Transfer, \
                     Tours, Excursion , Place_departure_choices, \
-                    Subgroup_choices, Mails , Album, Foto
+                    Subgroup_choices, Mails , Album, Foto, Video
 
 from sorl.thumbnail.admin import AdminImageMixin
 # regiter group of Memeber in admin site (adminka)
@@ -445,6 +445,9 @@ class FotoAdmin(admin.ModelAdmin):
         return redirect('/admin/app/')
 
 admin.site.register(Foto, FotoAdmin)
+
+# video gallery
+admin.site.register(Video)
 
 class AlbumAdmin(admin.ModelAdmin):
     list_display = ['title']

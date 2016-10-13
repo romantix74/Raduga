@@ -186,9 +186,7 @@ class CommonView(TemplateView):
     commmon class for views with date args an etc
     """
     template_name = 'app/index.html'
-    #def __init__(self, **kwargs):        
-    #    self.context = {}
-    #    self.context['year'] = datetime.now().year
+    
     def get_context_data(self, **kwargs):
         context = super(CommonView, self).get_context_data(**kwargs)
         context['year'] = datetime.now().year
@@ -207,11 +205,12 @@ class FotoView(CommonView):
 
 class VideoView(CommonView):
     
-    template_name = 'app/foto_gallery.html'
+    template_name = 'app/video_gallery.html'
 
     def get_context_data(self, **kwargs):
         context = super(VideoView, self).get_context_data(**kwargs)
-        context['title'] = u'Видео-галлерея'        
+        context['title'] = u'Видео-галлерея'    
+        context['albums'] = Album.objects.all()    
         return context
 
 def reglament(request):
