@@ -21,7 +21,6 @@
         <!-- Фотка-кнопка загрузки фото плюс профиль и таблицы -->       
             <!-- Фотка-кнопка загрузки -->
             <div class="row" id="profile_block" name="profile_block" ng-controller="ProfileController as prfCtrl">
-                {#{$ 2+3 $}#}
                 <div  class="col-md-6" >                   
                     {% if directorOfGroup.foto %}
                         <img id="profile_image" src="{{directorOfGroup.foto.url}}" alt="фото коллектива" class="img-responsive center-block"/>                    
@@ -59,6 +58,12 @@
                 <div id="profile" class="col-md-6">
                 {% include 'tables/Profile.html' %}  
                 </div>                     
+            </div>
+            <div class="text-center bg-danger">
+                Уважаемые участники и руководители коллективов! 
+            </div>
+            <div class="text-center bg-danger">
+                Прием заявок временно остановлен, мы обязательно оповестим вас о возобновлении.
             </div>
             <!-- Таблицы идут во второй строке -->
             <!-- Таблица с участниками --------------------------------------------------------------------------->

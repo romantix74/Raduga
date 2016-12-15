@@ -372,7 +372,7 @@ class DirectorEditForm(forms.ModelForm):
         super(DirectorEditForm, self).__init__(*args, **kwargs)
         setup_bootstrap_helpers(self, 'id-DirectorEditForm')
 
-        add.delay(2,567)
+        #add.delay(2,567)
 
         #self.helper = FormHelper(self)
         #self.helper.form_id = 'id-DirectorEditForm'

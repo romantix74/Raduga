@@ -2,37 +2,29 @@
 
 
 {% if user.is_authenticated %}
-<form id="logoutForm" action="/logout" method="post" class="navbar-right">
-    {% csrf_token %}
-    <ul class="nav navbar-nav {#navbar-right#}">        
-        <li>             
-            <img id="phone_id" class="center-block" src="{% static 'app/images/telephone.png' %}" width="25" height="25" />          
-        </li>
-        <li class="h5 center-block">                            
-            <div style="display:inline-block; margin-right:10px">
-                <span class="h4">8-800-500-43-92</span><br/>
-                <span class="h6" style="margin:0 auto;">бесплатно по России</span>
-            </div>                        
-        </li>
-        <li><span class="navbar-brand"> {{ user.username }}!</span></li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
-    </ul>
+    <form id="logoutForm" action="/logout" method="post" class="navbar-right">
+        {% csrf_token %}
+        <ul class="nav navbar-nav">            
+            
+            <li><span class="navbar-brand"> {{ user.username }}!</span></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+        </ul>
 
-</form>
+    </form>
 
 {% else %}
 
-<ul class="nav navbar-nav pull-right">
-    <li>             
-        <img id="phone_id" class="center-block" src="{% static 'app/images/telephone.png' %}" width="25" height="25" />          
-    </li>
-    <li class="h5 center-block">                            
-        <div style="display:inline-block; margin-right:10px">
-            <span class="h4">8-800-500-43-92</span><br/>
-            <span class="h6" style="margin:0 auto;">бесплатно по России</span>
-        </div>                        
-    </li>
-    <li><a href="{% url 'login' %}">Войти</a></li>
-</ul>
+    <ul class="nav navbar-nav pull-right">
+        <li>             
+            {#<img id="phone_id" class="center-block" src="{% static 'app/images/telephone.png' %}" width="25" height="25" />#}          
+        </li>
+        <li class="h5 center-block">                            
+            <div style="display:inline-block; margin-right:10px">
+                {#<span class="h4">8-800-500-43-92</span><br/>#}
+                {#<span class="h6" style="margin:0 auto;">бесплатно по России</span>#}
+            </div>                        
+        </li>
+        <li><a href="{% url 'login' %}">Войти</a></li>
+    </ul>
 
 {% endif %}

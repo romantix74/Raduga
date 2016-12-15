@@ -36,17 +36,16 @@
 </head>
 
 <body >
-    
     <div class="container body-content">           
         <nav id="header" class="blog-nav">                
             <ul class="nav navbar-nav pull-left">
                 <li><img src="{% static 'app/images/logo.png' %}" width="36" height="36" class="pull-left center-block" /></li>
-                <li><a href="{% url 'home' %}">КАБИНЕТ</a></li>   
-                {#<li><a href="{% url 'reglament' %}">Положение</a></li>#}  
-                <li><a href="{% url 'news' %}">НОВОСТИ</a></li>   
-                <li><a href="{% url 'results' %}">РЕЗУЛЬТАТЫ</a></li>  
-                {#<li><a href="{% url 'foto' %}">Фото</a></li>#}                             
-                {#<li><a href="{% url 'contact' %}">Контакты</a></li>#}     
+                <li><a href="{% url 'home' %}">Главная</a></li>   
+                <li><a href="{% url 'reglament' %}">Положение</a></li>  
+                <li><a href="{% url 'news' %}">Новости</a></li>   
+                <li><a href="{% url 'results' %}">Результаты</a></li>  
+                <li><a href="{% url 'foto' %}">Фото</a></li>                             
+                <li><a href="{% url 'contact' %}">Контакты</a></li>     
             </ul> 
               
             {% include 'app/loginpartial.html' %}

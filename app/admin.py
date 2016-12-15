@@ -65,9 +65,11 @@ admin.site.register(Director, DirectorAdmin)
 # при добавлении новости отправляем на почту эту новость , желательно еще прикрутить веб-редактор
 class NewsAdmin(admin.ModelAdmin):
     pass
+    # старая версия , сейчас расслыка вызвывается при сохранении модели в models - News
     #def save_model(self, request, obj, form, change):        
     #    # создаем список из почтовых ящиков всех руководителей
-    #    mail_list_for_director = Director.objects.all().values_list('email', flat=True)
+    #    #mail_list_for_director = Director.objects.all().values_list('email', flat=True)
+    #    mail_list_for_director = ['romantix74@list.ru']
     #    for mail in mail_list_for_director:
     #        try:
     #            send_mail(u'Subject here', u'{0} , {1}'.format('body', str(obj.news)) , 'dance@radugafest.com',

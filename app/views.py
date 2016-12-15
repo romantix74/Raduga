@@ -386,7 +386,7 @@ def home(request):
     
         #--Particapation--
         try:
-            args['participation'] = ( Participation.objects.filter( user_id =_id ))
+            args['participation'] = ( Participation.objects.filter( user_id =_id , fest_num = 2 ))
         except ObjectDoesNotExist:
             args['participation'] = " "    
         args['formParticipation'] = ParticipationForm(_user = _id)
@@ -399,27 +399,27 @@ def home(request):
         #print sumParticipation
         #--Residing--
         try:
-            args['residing'] = ( Residing.objects.filter( user_id =_id ))
+            args['residing'] = ( Residing.objects.filter( user_id =_id , fest_num = 2 ))
         except ObjectDoesNotExist:
             args['residing'] = " "    
         args['formResiding'] = ResidingForm(_user = _id)    
 
         #--Transfer--
         try:
-            args['transfers'] = ( Transfer.objects.filter( user_id =_id ))
+            args['transfers'] = ( Transfer.objects.filter( user_id =_id , fest_num = 2 ))
         except ObjectDoesNotExist:
             args['transfers'] = " "
         args['formTransfer'] = TransferForm(_user = _id)  # передаем параметр для фильтрации место прибытия
         #--Excursion
         try:
-            args['excursions'] = ( Excursion.objects.filter( user_id =_id ))
+            args['excursions'] = ( Excursion.objects.filter( user_id =_id , fest_num = 2 ))
         except ObjectDoesNotExist:
             args['excursions'] = " "
         args['formExcursion'] = ExcursionForm(_user = _id)
         
         #--Food--
         try:
-            args['foods'] = ( Food.objects.filter( user_id =_id ))
+            args['foods'] = ( Food.objects.filter( user_id =_id ,  fest_num = 2 ))
         except ObjectDoesNotExist:
             args['foods'] = " "    
         args['formFood'] = FoodForm(_user = _id)
@@ -427,9 +427,9 @@ def home(request):
         args['year']  = datetime.now().year                             
         
         #return render_to_response('Member_raduga_template.html'  ,  args , context_instance=RequestContext(request))      
-        return render( request, 'Member_raduga_template.html', args )                
-                #context_instance = RequestContext(request, args)  # old version render , prior 1.10 
-            #)
+        return render( request, 'Member_raduga_template.html', #args )                
+                context_instance = RequestContext(request, args)  # old version render , prior 1.10 
+            )
 
 def UploadFoto_view(request):   
     if request.POST:

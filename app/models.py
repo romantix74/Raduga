@@ -74,10 +74,10 @@ class News(models.Model):
         # делаем фотку квадратной , обрезая края
         foto_crop(self.foto.path)
         #отправляем админам письмо о создании новости 
-        _mails = User.objects.filter(is_superuser = 1).values_list('email', flat=True)
+        #_mails = User.objects.filter(is_superuser = 1).values_list('email', flat=True)
         
         # для временно отключения , чтобы не отсылать пользователям тестовые письма
-        #_mails = Director.objects.all().values_list('email', flat=True)        
+        _mails = Director.objects.all().values_list('email', flat=True)        
         # новости - рассылка
         context = {'news' : self, 'dear name': u'Уважаемый участник'} #'news_title': news.news_title, } # 'news.foto.url', 'message': message}
         html = render_to_string('app/news_for_mail_FULL.html', context)

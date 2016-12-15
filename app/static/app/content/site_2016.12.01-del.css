@@ -6,7 +6,7 @@
     background-position: top;
     background-attachment: fixed;
     /*background-size: 100%;*/
-    color : black;
+    color : #0077bb;
     
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -127,14 +127,14 @@ input[type="checkbox"].input-validation-error {
 }
 
 #tblProfile > thead {
-    border: 1px solid black;
-    /*border-color: black;*/
+    border: 1px solid #0077bb;
+    /*border-color: #0077bb;*/
     color: rgb(255,255,255);
-    background-color: black;
+    background-color: #0077bb;
     
 }
 #tblProfile > tbody tr td:nth-child(1) {
-    color : black;
+    color : #0077bb;
 }
 
 #profile_block {
@@ -153,9 +153,9 @@ input[type="checkbox"].input-validation-error {
 #Profile_table_name_id {
     height: 34px;
     cursor: default;
-    border: 1px solid black;    
+    border: 1px solid #0077bb;    
     color: rgb(255,255,255);
-    background-color: black;    
+    background-color: #0077bb;    
     margin-bottom: 5px;
     border-radius: 0 0 10px 10px; 
        
@@ -166,7 +166,7 @@ input[type="checkbox"].input-validation-error {
 #Profile_table_name_id > h4 > span > img {
     position: absolute;
     display: block;
-    background-color: black;
+    background-color: #0077bb;
     position: absolute;
 }
 
@@ -220,7 +220,7 @@ input[type="checkbox"].input-validation-error {
 
 
 .table-name {
-    border: 1px solid black;    
+    border: 1px solid #0077bb;    
     color: rgb(255,255,255);
     background-color: black;    
     margin-bottom: 5px;
@@ -232,9 +232,9 @@ input[type="checkbox"].input-validation-error {
 }
 
 .reglament-name {
-    border: 1px solid black;    
+    border: 1px solid #0077bb;    
     color: rgb(255,255,255);
-    background-color: black;    
+    background-color: #0077bb;    
     margin-bottom: 5px;
     border-radius: 0 0 10px 10px;     
     cursor: pointer;   
@@ -244,7 +244,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 #news_id > div {
-    border: 1px solid black;
+    border: 1px solid #0077bb;
     border-radius: 10px;  /*0 10px 10px;*/
     margin: 0 0;
     /*display: flex;*/
@@ -323,7 +323,7 @@ input[type="checkbox"].input-validation-error {
 }
 .table {
     max-width: 100%;
-    border-color: black;
+    border-color: #0077bb;
 }
 .table tbody td {
     color: black;
@@ -332,10 +332,10 @@ input[type="checkbox"].input-validation-error {
     background-color: rgb(255,255,255);
 }
 .table > thead > tr > td {
-    border-color: black;
+    border-color: #0077bb;
 }
 .table > tbody > tr > td {
-    border-color: black;
+    border-color: #0077bb;
 }
 td {
     font-size: 11px;
@@ -361,7 +361,7 @@ td {
 
 /*для страницы профиля*/
 #profile_id label,span {
-    color: black !important;
+    color: #0077bb !important;
 }
 
 #profile_id .form-control {
@@ -387,7 +387,7 @@ td {
 }
 
 #resultsId > table > thead td {
-    background-color: black;
+    background-color: #0077bb;
     color: white;
 }
 
@@ -408,7 +408,7 @@ td {
 }
 
 #resultsGranId > table > thead td{
-    background-color: black;
+    background-color: #0077bb;
     color: white;
 }
 
@@ -428,7 +428,7 @@ td {
 /*foto gallery*/
 #foto_body_id > div > p {
     border: 1px solid black;
-    background-color: black;
+    background-color: #0077bb;
     color: white;
 }
 
