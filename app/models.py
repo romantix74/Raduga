@@ -120,6 +120,7 @@ Age_groups = (
         ( u'11-14', u'11-14 лет'),
         ( u'15-18', u'15-18 лет'),
         ( u'18-25', u'18-25 лет'),
+        ( u'profi', u'Профи'),
         ( u'hybrid', u'смешанная'),
     )
 Approval_choices = (
@@ -306,7 +307,11 @@ class Participation(Common_with_finance_Model):
         #('classic' , u'Классический танец'),
         ('narod+_narod_style' , u'Народный танец, народный стилизованный танец'),
         ('suget-igrovoi' , u'Сюжетно-игровой танец'), 
-        ('spec' , u'Великой победе посвящается'),            
+        ('tema' , u'Тематический танец'),
+        ('teatr_miniatur' , u'Театр-танца (танцевальные миниатюры)'),
+        ('teatr_svobod' , u'Театр-танца (свободная формы)'),
+        ('teatr_folk' , u'Театр-танца (фолк-движение)'),
+        ('spec' , u'Родина'),       #u'Великой победе посвящается'         
     )
     nomination = models.CharField(verbose_name=u'Номинация', max_length = 30 , choices = nomination_choices )
     def nomination_output(self):

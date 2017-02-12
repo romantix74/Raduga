@@ -345,12 +345,12 @@
     var prtcp_nomination = $('#prtcp_nomination');
     var prtcp_age_group = $('#prtcp_age_group');
     var prtcp_form_of_execution = $('#prtcp_form_of_execution');
-    function filter_participation() {
+    function filter_participation() {       
         prtcp_nomination.children('option[value="spec"]').addClass('hidden');
         //$('#prtcp_nomination option[value=""]').attr('selected', 'selected');
 
         if (prtcp_category.val() === 'adults') {            
-            var adults_arr = ['', 'estrada', 'narod', 'narod_style', 'sovremen_svobod', 'sovremen_ulica'];
+            var adults_arr = ['', 'estrada', 'narod', 'narod_style', 'sovremen_svobod', 'sovremen_ulica', 'teatr_miniatur', 'teatr_svobod', 'teatr_folk'];
             $('#prtcp_nomination option').each(function () {
                 $(this).removeClass('hidden');
                 //if ($(this).val() === "spec") { $(this).addClass('hidden');  }
@@ -364,7 +364,7 @@
             // обнуляем возраста
             prtcp_age_group.children('option').each(function () {
                 $(this).removeClass('hidden');
-                if ($.inArray($(this).val(), ['', '11-14', '15-18', '18-25', 'hybrid']) === -1) {
+                if ($.inArray($(this).val(), ['', '11-14', '15-18', '18-25','profi', 'hybrid']) === -1) {
                     $(this).addClass('hidden');
                 }
                 else {
@@ -373,7 +373,7 @@
             });
         }
         if (prtcp_category.val() === 'kids') {            
-            var kids_arr = ['', 'estrada', 'narod+_narod_style', 'suget-igrovoi'];
+            var kids_arr = ['', 'estrada', 'narod+_narod_style', 'suget-igrovoi', 'sovremen_ulica','tema'];
             $('#prtcp_nomination option').each(function () {
                 if (($.inArray($(this).val(), kids_arr)) === -1) {
                     $(this).addClass('hidden');
