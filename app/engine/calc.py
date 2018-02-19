@@ -42,6 +42,7 @@ def Calc(instance, **kwargs):
     adult_11_14 = adult_applications.filter( age_group='11-14')
     adult_15_18 = adult_applications.filter( age_group='15-18')
     adult_18_25 = adult_applications.filter( age_group='18-25')
+    adult_profi = adult_applications.filter( age_group='profi')
     adult_hybrid = adult_applications.filter( age_group='hybrid')
 
     #adult_applications_duet = adult_applications.filter(form_of_execution='duet')
@@ -94,16 +95,19 @@ def Calc(instance, **kwargs):
     _adults(adult_11_14.filter(form_of_execution='ensamble'))
     _adults(adult_15_18.filter(form_of_execution='ensamble'))
     _adults(adult_18_25.filter(form_of_execution='ensamble'))
+    _adults(adult_profi.filter(form_of_execution='ensamble'))
     _adults(adult_hybrid.filter(form_of_execution='ensamble'))
 
     _adults_duet(adult_11_14.filter(form_of_execution='duet'))
     _adults_duet(adult_15_18.filter(form_of_execution='duet'))
     _adults_duet(adult_18_25.filter(form_of_execution='duet'))
+    _adults_duet(adult_profi.filter(form_of_execution='duet'))
     _adults_duet(adult_hybrid.filter(form_of_execution='duet'))
 
     _adults_solo(adult_11_14.filter(form_of_execution='solo'))
     _adults_solo(adult_15_18.filter(form_of_execution='solo'))
     _adults_solo(adult_18_25.filter(form_of_execution='solo'))
+    _adults_solo(adult_profi.filter(form_of_execution='solo'))
     
     print "--------kids--------"
     # РАСЧЕТ ДЛЯ ДЕТЕЙ========================================================================

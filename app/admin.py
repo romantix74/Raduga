@@ -163,7 +163,7 @@ class ParticipationAdmin(CommonClass):
     fields =   common_list_display + [ 'category', 'nomination', 'age_group', 'subgroup', 'form_of_execution', 
                                       'list_member','member1', 'member2', 'member3', 
                                         'composition_1', 'description_comp', 'payment', 'place' ]  
-    list_filter = ['user__groupName', 'nomination', 'age_group' , 'form_of_execution']  
+    list_filter = ['user__groupName', 'nomination', 'age_group' , 'form_of_execution','fest_num']  
     
     def get_urls(self):
         urls = super(ParticipationAdmin, self).get_urls()        
