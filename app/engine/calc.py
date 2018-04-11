@@ -39,8 +39,8 @@ def Calc(instance, **kwargs):
     #kid_applications_solo    = Participation.objects.filter(user = instance.user, category = 'kids' , form_of_execution='solo')
 
     adult_applications  = Participation.objects.filter(user = instance.user, category = 'adults')
-    adult_11_14 = adult_applications.filter( age_group='11-14')
-    adult_15_18 = adult_applications.filter( age_group='15-18')
+    adult_10_13 = adult_applications.filter( age_group='10-13')
+    adult_14_17 = adult_applications.filter( age_group='14-17')
     adult_18_25 = adult_applications.filter( age_group='18-25')
     adult_profi = adult_applications.filter( age_group='profi')
     adult_hybrid = adult_applications.filter( age_group='hybrid')
@@ -92,20 +92,20 @@ def Calc(instance, **kwargs):
             print app.payment                
             app.save()
  
-    _adults(adult_11_14.filter(form_of_execution='ensamble'))
-    _adults(adult_15_18.filter(form_of_execution='ensamble'))
+    _adults(adult_10_13.filter(form_of_execution='ensamble'))
+    _adults(adult_14_17.filter(form_of_execution='ensamble'))
     _adults(adult_18_25.filter(form_of_execution='ensamble'))
     _adults(adult_profi.filter(form_of_execution='ensamble'))
     _adults(adult_hybrid.filter(form_of_execution='ensamble'))
 
-    _adults_duet(adult_11_14.filter(form_of_execution='duet'))
-    _adults_duet(adult_15_18.filter(form_of_execution='duet'))
+    _adults_duet(adult_10_13.filter(form_of_execution='duet'))
+    _adults_duet(adult_14_17.filter(form_of_execution='duet'))
     _adults_duet(adult_18_25.filter(form_of_execution='duet'))
     _adults_duet(adult_profi.filter(form_of_execution='duet'))
     _adults_duet(adult_hybrid.filter(form_of_execution='duet'))
 
-    _adults_solo(adult_11_14.filter(form_of_execution='solo'))
-    _adults_solo(adult_15_18.filter(form_of_execution='solo'))
+    _adults_solo(adult_10_13.filter(form_of_execution='solo'))
+    _adults_solo(adult_14_17.filter(form_of_execution='solo'))
     _adults_solo(adult_18_25.filter(form_of_execution='solo'))
     _adults_solo(adult_profi.filter(form_of_execution='solo'))
     
